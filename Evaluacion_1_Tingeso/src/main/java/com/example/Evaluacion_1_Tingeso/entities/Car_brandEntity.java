@@ -17,8 +17,12 @@ import jakarta.persistence.*;
 public class Car_brandEntity {
 
     @Id
-    @Column(name = "brand", unique = true, nullable = false)
-    private String brand;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "brand_id")
+    private int brand_id;
+
+    @Column(name = "brand_name")
+    private String brand_name;
 
     @Column(name = "bond_available")
     private int bond_available;
@@ -26,7 +30,4 @@ public class Car_brandEntity {
     @Column(name = "amount")
     private int amount;
 
-    @OneToMany(mappedBy =  "brand", cascade = CascadeType.ALL)
-    @JsonBackReference
-    private List<CarEntity> cars;
 }

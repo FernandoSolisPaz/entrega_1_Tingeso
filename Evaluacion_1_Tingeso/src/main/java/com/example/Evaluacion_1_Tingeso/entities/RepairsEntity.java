@@ -17,8 +17,8 @@ public class RepairsEntity {
 
     @Id
     @GeneratedValue(strategy =  GenerationType.IDENTITY)
-    @Column(name = "id")
-    private int id;
+    @Column(name = "repair_id")
+    private int repair_id;
 
     @Column(name = "repair_name")
     private String repair_name;

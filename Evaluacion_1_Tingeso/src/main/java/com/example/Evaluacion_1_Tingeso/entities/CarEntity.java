@@ -1,10 +1,10 @@
 package com.example.Evaluacion_1_Tingeso.entities;
 
-import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import java.util.Date;
+import java.time.LocalDate;
 import jakarta.persistence.*;
 
 @Entity
@@ -17,10 +17,8 @@ public class CarEntity {
     @Column(name = "patent")
     private String patent;
 
-    @ManyToOne
-    @JoinColumn(name = "brand_name", referencedColumnName = "brand")
-    @JsonManagedReference
-    private Car_brandEntity car_brand;
+    @Column(name = "car_brand_id")
+    private int car_brand_id;
 
     @Column(name = "model")
     private String model;
@@ -29,7 +27,7 @@ public class CarEntity {
     private String type;
 
     @Column(name = "year_of_fabrication")
-    private Date year_of_fabrication;
+    private LocalDate year_of_fabrication;
 
     @Column(name = "motor")
     private int motor;
