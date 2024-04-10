@@ -4,18 +4,16 @@ package com.example.Evaluacion_1_Tingeso.services;
 import com.example.Evaluacion_1_Tingeso.entities.Car_brandEntity;
 import com.example.Evaluacion_1_Tingeso.repositories.Car_brandRepository;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.jpa.repository.Query;
-import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
+import java.util.List;
 
 @Service
 public class Car_brandService {
     @Autowired
     Car_brandRepository car_brandRepository;
 
-    public ArrayList<Car_brandEntity> getCarBrand(){ return (ArrayList<Car_brandEntity>) car_brandRepository.findAll(); }
+    public List<Car_brandEntity> getCarBrand(){ return car_brandRepository.findAll(); }
 
     public Car_brandEntity saveCarBrand(Car_brandEntity carBrand){return car_brandRepository.save(carBrand); }
 
