@@ -18,14 +18,14 @@ public class Car_brandEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "brand_id")
-    private int brand_id;
+    @Column(name = "brandId")
+    private Long brandId;
 
-    @Column(name = "brand_name")
-    private String brand_name;
+    @Column(name = "brandName")
+    private String brandName;
 
-    @Column(name = "bond_available")
-    private int bond_available;
+    @Column(name = "bondAvailable")
+    private int bondAvailable;
 
     @Column(name = "amount")
     private int amount;

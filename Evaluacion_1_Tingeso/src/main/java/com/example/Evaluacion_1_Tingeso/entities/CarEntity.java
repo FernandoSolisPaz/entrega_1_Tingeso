@@ -14,11 +14,11 @@ import jakarta.persistence.*;
 @AllArgsConstructor
 public class CarEntity {
     @Id
-    @Column(name = "patent")
-    private String patent;
+    @Column(name = "plate")
+    private String plate;
 
-    @Column(name = "car_brand_id")
-    private int car_brand_id;
+    @Column(name = "carBrandId")
+    private Long carBrandId;
 
     @Column(name = "model")
     private String model;
@@ -26,14 +26,14 @@ public class CarEntity {
     @Column(name = "type")
     private String type;
 
-    @Column(name = "year_of_fabrication")
-    private LocalDate year_of_fabrication;
+    @Column(name = "yearOfFabrication")
+    private LocalDate yearOfFabrication;
 
     @Column(name = "motor")
     private int motor;
 
-    @Column(name = "number_of_seats")
-    private int number_of_seats;
+    @Column(name = "numberOfSeats")
+    private int numberOfSeats;
 
     @Column(name = "kilometers")
     private int kilometers;

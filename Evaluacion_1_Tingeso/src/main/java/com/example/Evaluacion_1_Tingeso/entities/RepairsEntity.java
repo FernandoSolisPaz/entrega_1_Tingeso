@@ -17,15 +17,15 @@ public class RepairsEntity {
 
     @Id
     @GeneratedValue(strategy =  GenerationType.IDENTITY)
-    @Column(name = "repair_id")
-    private int repair_id;
+    @Column(name = "repairId")
+    private Long repairId;
 
-    @Column(name = "repair_name")
-    private String repair_name;
+    @Column(name = "repairName")
+    private String repairName;
 
-    @Column(name = "type_of_motor")
-    private int type_of_motor;
+    @Column(name = "typeOfMotor")
+    private int typeOfMotor;
 
-    @Column(name = "cost_of_repair")
-    private int cost_of_repair;
+    @Column(name = "costOfRepair")
+    private int costOfRepair;
 }

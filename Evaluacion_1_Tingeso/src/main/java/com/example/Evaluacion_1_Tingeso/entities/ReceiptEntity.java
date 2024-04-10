@@ -16,52 +16,52 @@ public class ReceiptEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "receipt_id")
-    private int receipt_id;
+    @Column(name = "receiptId")
+    private Long receiptId;
 
-    @Column(name = "workshop_in_date")
-    private LocalDate workshop_in_date;
+    @Column(name = "workshopInDate")
+    private LocalDate workshopInDate;
 
-    @Column(name = "workshop_in_hour")
-    private LocalTime workshop_in_hour;
+    @Column(name = "workshopInHour")
+    private LocalTime workshopInHour;
 
-    @Column(name = "type_of_repair_id")
-    private int type_of_repair_id;
+    @Column(name = "typeOfRepairId")
+    private int typeOfRepairId;
 
-    @Column(name = "total_amount")
-    private int total_mount;
+    @Column(name = "totalAmount")
+    private int totalAmount;
 
-    @Column(name = "workshop_out_date")
-    private LocalDate workshop_out_date;
+    @Column(name = "workshopOutDate")
+    private LocalDate workshopOutDate;
 
-    @Column(name = "workshop_out_hour")
-    private LocalTime workshop_out_hour;
+    @Column(name = "workshopOutHour")
+    private LocalTime workshopOutHour;
 
-    @Column(name = "pick_up_date")
-    private LocalDate pick_up_date;
+    @Column(name = "pickUpDate")
+    private LocalDate pickUpDate;
 
-    @Column(name = "pick_up_hour")
-    private LocalTime pick_up_hour;
+    @Column(name = "pickUpHour")
+    private LocalTime pickUpHour;
 
-    @Column(name = "car_patent")
-    private String car_patent;
+    @Column(name = "carPlate")
+    private String carPlate;
 
-    @Column(name = "brand_bond")
-    private int brand_bond;
+    @Column(name = "brandBond")
+    private int brandBond;
 
-    @Column(name = "day_of_attention_disc")
-    private float day_of_attention_disc;
+    @Column(name = "dayOfAttentionDisc")
+    private float dayOfAttentionDisc;
 
-    @Column(name = "number_of_repairs_disc")
-    private float number_of_repairs_disc;
+    @Column(name = "numberOfRepairsDisc")
+    private float numberOfRepairsDisc;
 
-    @Column(name = "age_vehicle_surcharge")
-    private float age_vehicle_surcharge;
+    @Column(name = "ageVehicleSurcharge")
+    private float ageVehicleSurcharge;
 
-    @Column(name = "delay_of_pick_up_surcharge")
-    private float delay_of_pick_up_surcharge;
+    @Column(name = "delayOfPickUpSurcharge")
+    private float delayOfPickUpSurcharge;
 
-    @Column (name = "kilometers_surcharge")
-    private float kilometers_surcharge;
+    @Column (name = "kilometersSurcharge")
+    private float kilometersSurcharge;
 
 }
