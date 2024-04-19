@@ -26,7 +26,7 @@ public class ReceiptEntity {
     private LocalTime workshopInHour;
 
     @Column(name = "typeOfRepairId")
-    private int typeOfRepairId;
+    private Long typeOfRepairId;
 
     @Column(name = "totalAmount")
     private int totalAmount;

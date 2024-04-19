@@ -27,7 +27,7 @@ public class ReceiptController {
         return ResponseEntity.ok(receipt);
     }
 
-    @GetMapping("/{plate}")
+    @GetMapping("/byPlate/{plate}")
     public ResponseEntity<List<ReceiptEntity>> getReceiptByCarPlate(@PathVariable String plate) {
         List<ReceiptEntity> receipts = receiptService.getReceiptByCarPlate(plate);
         return ResponseEntity.ok(receipts);

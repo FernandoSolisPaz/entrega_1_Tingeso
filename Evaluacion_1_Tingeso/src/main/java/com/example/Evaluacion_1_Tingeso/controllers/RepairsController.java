@@ -27,7 +27,7 @@ public class RepairsController {
         return ResponseEntity.ok(repair);
     }
 
-    @GetMapping("/{name}")
+    @GetMapping("/name/{name}")
     public ResponseEntity<RepairsEntity> getRepairByRepairName(@PathVariable String name) {
         RepairsEntity repair = repairsService.getRepairByRepairName(name);
         return ResponseEntity.ok(repair);

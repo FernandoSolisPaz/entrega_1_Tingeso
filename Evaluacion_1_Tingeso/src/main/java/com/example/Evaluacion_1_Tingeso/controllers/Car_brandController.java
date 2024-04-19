@@ -23,11 +23,11 @@ public class Car_brandController {
 
     @GetMapping("/{id}")
     public ResponseEntity<Car_brandEntity> getCarBrandById(@PathVariable Long id) {
-        Car_brandEntity car_brand = car_BrandService.getCarBrandById(id);
+        Car_brandEntity car_brand = car_BrandService.getCarBrandByid(id);
         return ResponseEntity.ok(car_brand);
     }
 
-    @GetMapping("/{name}")
+    @GetMapping("/name/{name}")
     public ResponseEntity<Car_brandEntity> getCarBrandByName(@PathVariable String name) {
         Car_brandEntity car_brand = car_BrandService.getCarBrandByName(name);
         return ResponseEntity.ok(car_brand);
