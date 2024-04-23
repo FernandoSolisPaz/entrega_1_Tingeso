@@ -28,6 +28,9 @@ public class ReceiptEntity {
     @Column(name = "typeOfRepairId")
     private Long typeOfRepairId;
 
+    @Column(name = "costOfRepair")
+    private int costOfRepair;
+
     @Column(name = "totalAmount")
     private int totalAmount;
 

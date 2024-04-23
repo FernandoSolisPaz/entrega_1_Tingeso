@@ -1,11 +1,11 @@
 package com.example.Evaluacion_1_Tingeso.entities;
 
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
+
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import java.util.List;
+
 
 import jakarta.persistence.*;
 
