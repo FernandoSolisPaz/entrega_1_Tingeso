@@ -4,6 +4,8 @@ import com.example.Evaluacion_1_Tingeso.entities.ReceiptEntity;
 import com.example.Evaluacion_1_Tingeso.repositories.ReceiptRepository;
 import com.example.Evaluacion_1_Tingeso.entities.Car_brandEntity;
 import com.example.Evaluacion_1_Tingeso.services.Car_brandService;
+import com.example.Evaluacion_1_Tingeso.entities.ReceiptRepairsEntity;
+import com.example.Evaluacion_1_Tingeso.services.ReceiptRepairsService;
 import com.example.Evaluacion_1_Tingeso.entities.RepairsEntity;
 import com.example.Evaluacion_1_Tingeso.services.RepairsService;
 import com.example.Evaluacion_1_Tingeso.entities.CarEntity;
@@ -23,13 +25,13 @@ public class ReceiptService {
     @Autowired
     ReceiptRepository receiptRepository;
     RepairsService repairsService;
+    ReceiptRepairsService receiptRepairsService;
     CarService carService;
     Car_brandService car_brandService;
 
     public List<ReceiptEntity> getReceipts(){ return receiptRepository.findAll(); }
 
-    public ReceiptEntity saveReceipt(ReceiptEntity receipt) {
-        float IVA = 0.19f;
+    public ReceiptEntity saveReceipt(ReceiptEntity receipt, List<Integer> repairIds) {
         float[][] matrixRepairs = {
                 {0.05f, 0.07f, 0.1f, 0.08f},
                 {0.1f, 0.12f, 0.15f, 0.13f},
@@ -48,12 +50,12 @@ public class ReceiptService {
                 {0.2f, 0.2f, 0.2f, 0.2f, 0.2f}
         };
         ReceiptEntity newReceipt = new ReceiptEntity();
+
         newReceipt.setWorkshopInDate(LocalDate.now());
         newReceipt.setWorkshopInHour(LocalTime.now());
+
         newReceipt.setCarPlate(receipt.getCarPlate());
-        newReceipt.setTypeOfRepairId(receipt.getTypeOfRepairId());
-        RepairsEntity repair_dummy1 = repairsService.getRepairById(receipt.getTypeOfRepairId());
-        newReceipt.setCostOfRepair(repair_dummy1.getCostOfRepair());
+
         CarEntity car_dummy1 = carService.getCarByPlate(receipt.getCarPlate());
         Car_brandEntity car_brand_dummy1 = car_brandService.getCarBrandByid(car_dummy1.getCarBrandId());
         if (car_brand_dummy1.getBondAvailable() > 0) {
@@ -111,7 +113,27 @@ public class ReceiptService {
             newReceipt.setKilometersSurcharge(0);
         }
 
-        return receiptRepository.save(receipt);
+        ReceiptEntity dummy = receiptRepository.save(receipt);
+        for(Integer Id: repairIds){
+            ReceiptRepairsEntity dummy2 = new ReceiptRepairsEntity();
+            dummy2.setReceiptId(dummy.getReceiptId());
+            dummy2.setRepairId(Integer.toUnsignedLong(Id));
+            receiptRepairsService.saveReceiptRepairs(dummy2);
+        }
+
+        List<ReceiptRepairsEntity> repairs = receiptRepairsService.getByReceiptId(receipt.getReceiptId());
+        int repairsSum = 0;
+        for (ReceiptRepairsEntity receiptRepairsDummy : repairs) {
+            RepairsEntity repair = repairsService.getRepairById(receiptRepairsDummy.getRepairId());
+            repairsSum = repairsSum + repair.getCostOfRepair();
+        }
+        dummy.setCostOfRepair(repairsSum);
+
+        float cost = (repairsSum - dummy.getBrandBond() - repairsSum * dummy.getDayOfAttentionDisc() - repairsSum * dummy.getNumberOfRepairsDisc() + repairsSum * dummy.getAgeVehicleSurcharge() + repairsSum * dummy.getKilometersSurcharge());
+        float totalCost = cost + cost * Float.parseFloat(System.getenv("IVA"));
+        dummy.setTotalAmount(totalCost);
+
+        return updateReceipt(dummy);
     }
 
     public ReceiptEntity getReceiptById(Long id) { return receiptRepository.findById(id).get(); }

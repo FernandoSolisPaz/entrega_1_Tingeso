@@ -25,14 +25,11 @@ public class ReceiptEntity {
     @Column(name = "workshopInHour")
     private LocalTime workshopInHour;
 
-    @Column(name = "typeOfRepairId")
-    private Long typeOfRepairId;
-
     @Column(name = "costOfRepair")
     private int costOfRepair;
 
     @Column(name = "totalAmount")
-    private int totalAmount;
+    private float totalAmount;
 
     @Column(name = "workshopOutDate")
     private LocalDate workshopOutDate;
