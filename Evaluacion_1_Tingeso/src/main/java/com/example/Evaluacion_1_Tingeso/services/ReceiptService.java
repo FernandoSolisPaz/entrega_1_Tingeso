@@ -19,6 +19,8 @@ import java.time.LocalDate;
 import java.time.LocalTime;
 import java.time.DayOfWeek;
 import java.time.Period;
+import java.time.LocalDateTime;
+import java.time.temporal.ChronoUnit;
 @Service
 public class ReceiptService {
 
@@ -134,10 +136,6 @@ public class ReceiptService {
         }
         dummy.setCostOfRepair(repairsSum);
 
-        float cost = (repairsSum - dummy.getBrandBond() - repairsSum * dummy.getDayOfAttentionDisc() - repairsSum * dummy.getNumberOfRepairsDisc() + repairsSum * dummy.getAgeVehicleSurcharge() + repairsSum * dummy.getKilometersSurcharge());
-        float totalCost = cost + cost * Float.parseFloat(System.getenv("IVA"));
-        dummy.setTotalAmount(totalCost);
-
         return updateReceipt(dummy);
     }
 
@@ -145,7 +143,29 @@ public class ReceiptService {
 
     public List<ReceiptEntity> getReceiptByCarPlate(String plate){ return receiptRepository.findByCarPlate(plate); }
 
-    public ReceiptEntity updateReceipt(ReceiptEntity receipt){ return receiptRepository.save(receipt); }
+    public ReceiptEntity updateReceipt(ReceiptEntity receipt){
+        if(receipt.getWorkshopOutDate()!= null && receipt.getWorkshopOutHour() != null && receipt.getPickUpDate() != null && receipt.getPickUpHour() != null){
+            LocalDateTime workshopOut = receipt.getWorkshopOutDate().atTime(receipt.getWorkshopOutHour());
+            LocalDateTime pickUp = receipt.getPickUpDate().atTime(receipt.getPickUpHour());
+            long days_passed_between_out_pickup = ChronoUnit.DAYS.between(workshopOut, pickUp);
+            float late_pickup_surcharge = 0.05f * days_passed_between_out_pickup;
+            receipt.setDelayOfPickUpSurcharge(late_pickup_surcharge);
+        } else if (receipt.getWorkshopOutDate() != null && receipt.getWorkshopOutHour() != null) {
+            LocalDateTime workshopOut = receipt.getWorkshopOutDate().atTime(receipt.getWorkshopOutHour());
+            LocalDateTime today = LocalDateTime.now();
+            long days_passed_between_out_today = ChronoUnit.DAYS.between(workshopOut, today);
+            float late_pickup_surcharge = 0.05f * days_passed_between_out_today;
+            receipt.setDelayOfPickUpSurcharge(late_pickup_surcharge);
+        } else {
+            float late_pickup_surcharge = 0;
+            receipt.setDelayOfPickUpSurcharge(late_pickup_surcharge);
+        }
+        int repairsSum = receipt.getCostOfRepair();
+        float cost = (repairsSum - receipt.getBrandBond() - repairsSum * receipt.getDayOfAttentionDisc() - repairsSum * receipt.getNumberOfRepairsDisc() + repairsSum * receipt.getAgeVehicleSurcharge() + repairsSum * receipt.getKilometersSurcharge() + repairsSum * receipt.getDelayOfPickUpSurcharge());
+        float totalCost = cost + cost * Float.parseFloat(System.getenv("IVA"));
+        receipt.setTotalAmount(totalCost);
+        return receiptRepository.save(receipt);
+    }
 
     public boolean deleteReceipt(Long id) throws Exception{
         try{
