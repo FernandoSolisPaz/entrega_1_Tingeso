@@ -24,9 +24,13 @@ public class ReceiptService {
 
     @Autowired
     ReceiptRepository receiptRepository;
+    @Autowired
     RepairsService repairsService;
+    @Autowired
     ReceiptRepairsService receiptRepairsService;
+    @Autowired
     CarService carService;
+    @Autowired
     Car_brandService car_brandService;
 
     public List<ReceiptEntity> getReceipts(){ return receiptRepository.findAll(); }
@@ -55,8 +59,8 @@ public class ReceiptService {
         newReceipt.setWorkshopInHour(LocalTime.now());
 
         newReceipt.setCarPlate(receipt.getCarPlate());
-
-        CarEntity car_dummy1 = carService.getCarByPlate(receipt.getCarPlate());
+        String carPlate = receipt.getCarPlate();
+        CarEntity car_dummy1 = carService.getCarByPlate(carPlate);
         Car_brandEntity car_brand_dummy1 = car_brandService.getCarBrandByid(car_dummy1.getCarBrandId());
         if (car_brand_dummy1.getBondAvailable() > 0) {
             newReceipt.setBrandBond(car_brand_dummy1.getAmount());
@@ -65,8 +69,8 @@ public class ReceiptService {
         }else{
             newReceipt.setBrandBond(0);
         }
-        DayOfWeek day_in_workshop = receipt.getWorkshopInDate().getDayOfWeek();
-        LocalTime hour_in_workshop = receipt.getWorkshopInHour();
+        DayOfWeek day_in_workshop = newReceipt.getWorkshopInDate().getDayOfWeek();
+        LocalTime hour_in_workshop = newReceipt.getWorkshopInHour();
         LocalTime start = LocalTime.of(9, 0); // 9:00
         LocalTime end = LocalTime.of(12, 0); //12:00
         if((day_in_workshop.equals(DayOfWeek.MONDAY) || day_in_workshop.equals(DayOfWeek.THURSDAY)) && (hour_in_workshop.isAfter(start) && hour_in_workshop.isBefore(end))){
@@ -113,7 +117,7 @@ public class ReceiptService {
             newReceipt.setKilometersSurcharge(0);
         }
 
-        ReceiptEntity dummy = receiptRepository.save(receipt);
+        ReceiptEntity dummy = receiptRepository.save(newReceipt);
         for(Integer Id: repairIds){
             ReceiptRepairsEntity dummy2 = new ReceiptRepairsEntity();
             dummy2.setReceiptId(dummy.getReceiptId());
@@ -121,9 +125,10 @@ public class ReceiptService {
             receiptRepairsService.saveReceiptRepairs(dummy2);
         }
 
-        List<ReceiptRepairsEntity> repairs = receiptRepairsService.getByReceiptId(receipt.getReceiptId());
+        List<ReceiptRepairsEntity> repairs = receiptRepairsService.getByReceiptId(dummy.getReceiptId());
         int repairsSum = 0;
         for (ReceiptRepairsEntity receiptRepairsDummy : repairs) {
+
             RepairsEntity repair = repairsService.getRepairById(receiptRepairsDummy.getRepairId());
             repairsSum = repairsSum + repair.getCostOfRepair();
         }

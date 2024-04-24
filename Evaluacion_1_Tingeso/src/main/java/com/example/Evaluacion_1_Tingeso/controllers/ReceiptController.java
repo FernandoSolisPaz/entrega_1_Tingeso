@@ -34,7 +34,7 @@ public class ReceiptController {
     }
 
     @PostMapping("/")
-    public ResponseEntity<ReceiptEntity> saveReceipt(@RequestBody ReceiptEntity receipt, List<Integer> repairIds) {
+    public ResponseEntity<ReceiptEntity> saveReceipt(@RequestBody ReceiptEntity receipt, @RequestParam("repairIds") List<Integer> repairIds) {
         ReceiptEntity receiptNew = receiptService.saveReceipt(receipt, repairIds);
         return ResponseEntity.ok(receiptNew);
     }
