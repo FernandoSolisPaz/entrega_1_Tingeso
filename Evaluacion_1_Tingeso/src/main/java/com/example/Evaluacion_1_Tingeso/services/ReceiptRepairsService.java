@@ -22,4 +22,14 @@ public class ReceiptRepairsService {
     public List<ReceiptRepairsEntity> getByRepairId(Long repairId){ return receiptRepairsRepository.findByRepairId(repairId); }
 
     public ReceiptRepairsEntity updateReceiptRepairs(ReceiptRepairsEntity receiptrepair){ return receiptRepairsRepository.save(receiptrepair); }
+
+    public boolean deleteReceiptRepairs(Long id) throws Exception{
+        try{
+            receiptRepairsRepository.deleteById(id);
+            return true;
+        } catch (Exception e){
+            throw new Exception(e.getMessage());
+        }
+    }
+}
 }

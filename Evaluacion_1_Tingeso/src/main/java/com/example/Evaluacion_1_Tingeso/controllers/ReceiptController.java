@@ -5,7 +5,10 @@ import com.example.Evaluacion_1_Tingeso.services.ReceiptService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.format.annotation.DateTimeFormat;
 
+import java.time.LocalDate;
+import java.time.LocalTime;
 import java.util.List;
 
 @RestController
@@ -43,6 +46,19 @@ public class ReceiptController {
     public ResponseEntity<ReceiptEntity> updateReceipt(@RequestBody ReceiptEntity repair) {
         ReceiptEntity repairUpdated = receiptService.updateReceipt(repair);
         return ResponseEntity.ok(repairUpdated);
+    }
+
+    @PutMapping("/modify_out_date/{receiptId}")
+    public ResponseEntity<ReceiptEntity> mod_out_dates(@PathVariable Long receiptId, @RequestParam("workshopOutDate") LocalDate workshopOutDate, @RequestParam("workshopOutHour") LocalTime workshopOutHour) {
+        LocalTime dummy = workshopOutHour;
+        ReceiptEntity moddedReceipt = receiptService.modifyOutDatesReceipt(receiptId, workshopOutDate, dummy);
+        return ResponseEntity.ok(moddedReceipt);
+    }
+
+    @PutMapping("/modify_pickUp_date/{receiptId}")
+    public ResponseEntity<ReceiptEntity> mod_pickUp_dates(@PathVariable Long receiptId, @RequestParam("pickUpDate") LocalDate pickUpDate, @RequestParam("pickUpHour") LocalTime pickUpHour) {
+        ReceiptEntity moddedReceipt = receiptService.modifyPickUpDatesReceipt(receiptId, pickUpDate, pickUpHour);
+        return ResponseEntity.ok(moddedReceipt);
     }
 
     @DeleteMapping("/{id}")

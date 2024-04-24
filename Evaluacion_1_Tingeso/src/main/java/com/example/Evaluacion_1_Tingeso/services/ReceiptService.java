@@ -167,6 +167,20 @@ public class ReceiptService {
         return receiptRepository.save(receipt);
     }
 
+    public ReceiptEntity modifyOutDatesReceipt(long receiptId, LocalDate workshopOutDate, LocalTime workshopOutHour){
+        ReceiptEntity moddedReceipt = getReceiptById(receiptId);
+        moddedReceipt.setWorkshopOutDate(workshopOutDate);
+        moddedReceipt.setWorkshopOutHour(workshopOutHour);
+        return updateReceipt(moddedReceipt);
+    }
+
+    public ReceiptEntity modifyPickUpDatesReceipt(long receiptId, LocalDate pickUpDate, LocalTime pickUpHour){
+        ReceiptEntity moddedReceipt = getReceiptById(receiptId);
+        moddedReceipt.setPickUpDate(pickUpDate);
+        moddedReceipt.setPickUpHour(pickUpHour);
+        return updateReceipt(moddedReceipt);
+    }
+
     public boolean deleteReceipt(Long id) throws Exception{
         try{
             receiptRepository.deleteById(id);

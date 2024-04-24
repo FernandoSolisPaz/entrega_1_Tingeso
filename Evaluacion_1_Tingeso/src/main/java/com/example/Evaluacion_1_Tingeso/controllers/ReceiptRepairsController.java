@@ -44,4 +44,10 @@ public class ReceiptRepairsController {
         ReceiptRepairsEntity receiptRepairUpdated = receiptRepairsService.updateReceiptRepairs(receiptRepair);
         return ResponseEntity.ok(receiptRepairUpdated);
     }
+
+    @DeleteMapping("/{id}")
+    public ResponseEntity<Boolean> deleteReceiptRepairsById(@PathVariable Long id) throws Exception {
+        var isDeleted = receiptRepairsService.deleteReceiptRepairs(id);
+        return ResponseEntity.noContent().build();
+    }
 }
