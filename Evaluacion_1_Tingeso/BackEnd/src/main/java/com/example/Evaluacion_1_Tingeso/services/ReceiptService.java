@@ -93,9 +93,9 @@ public class ReceiptService {
         } else {
             newReceipt.setNumberOfRepairsDisc(0);
         }
-        LocalDate hoy = LocalDate.now();
-        Period years = Period.between(car_dummy1.getYearOfFabrication(), hoy);
-        int yearsOld = years.getYears();
+        int hoy = LocalDate.now().getYear();
+
+        int yearsOld = hoy - car_dummy1.getYearOfFabrication();
         int typeOfVehicle = car_dummy1.getType();
         if(yearsOld>=6 && yearsOld <= 10){
             newReceipt.setAgeVehicleSurcharge(matrixVehicleOldness[0][typeOfVehicle]);

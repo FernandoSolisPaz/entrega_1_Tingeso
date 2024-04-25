@@ -1,47 +1,42 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
   <component name="ChangeListManager">
     <list default="true" id="0cafeff3-2aa4-419c-97e4-79f189bd8592" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/Evaluacion_1_Tingeso/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Evaluacion_1_Tingeso/.mvn/wrapper/maven-wrapper.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Evaluacion_1_Tingeso/.mvn/wrapper/maven-wrapper.properties" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Evaluacion_1_Tingeso/mvnw" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Evaluacion_1_Tingeso/mvnw.cmd" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Evaluacion_1_Tingeso/pom.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Evaluacion_1_Tingeso/src/main/java/com/example/Evaluacion_1_Tingeso/Evaluacion1TingesoApplication.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Evaluacion_1_Tingeso/src/main/java/com/example/Evaluacion_1_Tingeso/controllers/CarController.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Evaluacion_1_Tingeso/src/main/java/com/example/Evaluacion_1_Tingeso/controllers/Car_brandController.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Evaluacion_1_Tingeso/src/main/java/com/example/Evaluacion_1_Tingeso/controllers/ReceiptController.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Evaluacion_1_Tingeso/src/main/java/com/example/Evaluacion_1_Tingeso/controllers/ReceiptRepairsController.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Evaluacion_1_Tingeso/src/main/java/com/example/Evaluacion_1_Tingeso/controllers/RepairsController.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Evaluacion_1_Tingeso/src/main/java/com/example/Evaluacion_1_Tingeso/entities/CarEntity.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Evaluacion_1_Tingeso/src/main/java/com/example/Evaluacion_1_Tingeso/entities/Car_brandEntity.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Evaluacion_1_Tingeso/src/main/java/com/example/Evaluacion_1_Tingeso/entities/ReceiptEntity.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Evaluacion_1_Tingeso/src/main/java/com/example/Evaluacion_1_Tingeso/entities/ReceiptRepairsEntity.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Evaluacion_1_Tingeso/src/main/java/com/example/Evaluacion_1_Tingeso/entities/RepairsEntity.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Evaluacion_1_Tingeso/src/main/java/com/example/Evaluacion_1_Tingeso/repositories/CarRepository.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Evaluacion_1_Tingeso/src/main/java/com/example/Evaluacion_1_Tingeso/repositories/Car_brandRepository.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Evaluacion_1_Tingeso/src/main/java/com/example/Evaluacion_1_Tingeso/repositories/ReceiptRepairsRepository.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Evaluacion_1_Tingeso/src/main/java/com/example/Evaluacion_1_Tingeso/repositories/ReceiptRepository.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Evaluacion_1_Tingeso/src/main/java/com/example/Evaluacion_1_Tingeso/repositories/RepairsRepository.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Evaluacion_1_Tingeso/src/main/java/com/example/Evaluacion_1_Tingeso/services/CarService.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Evaluacion_1_Tingeso/src/main/java/com/example/Evaluacion_1_Tingeso/services/Car_brandService.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Evaluacion_1_Tingeso/src/main/java/com/example/Evaluacion_1_Tingeso/services/ReceiptRepairsService.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Evaluacion_1_Tingeso/src/main/java/com/example/Evaluacion_1_Tingeso/services/ReceiptService.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Evaluacion_1_Tingeso/src/main/java/com/example/Evaluacion_1_Tingeso/services/RepairsService.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Evaluacion_1_Tingeso/src/main/resources/application.properties" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Evaluacion_1_Tingeso/src/test/java/com/example/Evaluacion_1_Tingeso/Evaluacion1TingesoApplicationTests.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Evaluacion_1_Tingeso/BackEnd/src/main/java/com/example/Evaluacion_1_Tingeso/services/ReceiptRepairsService.java" beforeDir="false" afterPath="$PROJECT_DIR$/Evaluacion_1_Tingeso/BackEnd/src/main/java/com/example/Evaluacion_1_Tingeso/services/ReceiptRepairsService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Evaluacion_1_Tingeso/BackEnd/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/Evaluacion_1_Tingeso/BackEnd/src/main/resources/application.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Evaluacion_1_Tingeso/FontEnd/vite-project/.env" beforeDir="false" afterPath="$PROJECT_DIR$/Evaluacion_1_Tingeso/FontEnd/vite-project/.env" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Evaluacion_1_Tingeso/FontEnd/vite-project/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/Evaluacion_1_Tingeso/FontEnd/vite-project/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Evaluacion_1_Tingeso/FontEnd/vite-project/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/Evaluacion_1_Tingeso/FontEnd/vite-project/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Evaluacion_1_Tingeso/FontEnd/vite-project/src/App.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/Evaluacion_1_Tingeso/FontEnd/vite-project/src/App.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Evaluacion_1_Tingeso/FontEnd/vite-project/src/components/RegisterCar.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/Evaluacion_1_Tingeso/FontEnd/vite-project/src/components/RegisterCar.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Evaluacion_1_Tingeso/FontEnd/vite-project/src/components/Sidemenu.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/Evaluacion_1_Tingeso/FontEnd/vite-project/src/components/Sidemenu.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Evaluacion_1_Tingeso/FontEnd/vite-project/src/services/car.service.js" beforeDir="false" afterPath="$PROJECT_DIR$/Evaluacion_1_Tingeso/FontEnd/vite-project/src/services/car.service.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="JavaScript File" />
+      </list>
+    </option>
+  </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
+  </component>
+  <component name="ProblemsViewState">
+    <option name="selectedTabId" value="CurrentFile" />
   </component>
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 3
@@ -58,11 +53,24 @@
     "WebServerToolWindowFactoryState": "false",
     "git-widget-placeholder": "main",
     "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "C:/Users/Nano solis/Desktop/entrega_1_Tingeso/Evaluacion_1_Tingeso/BackEnd",
+    "last_opened_file_path": "C:/Users/Fernando Solis Paz/Desktop/payroll-frontend",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
     "nodejs_package_manager_path": "npm",
+    "ts.external.directory.path": "C:\\Program Files\\JetBrains\\IntelliJ IDEA 2023.3.5\\plugins\\javascript-impl\\jsLanguageServicesImpl\\external",
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
+  <component name="SharedIndexes">
+    <attachedChunks>
+      <set>
+        <option value="bundled-jdk-9f38398b9061-18abd8497189-intellij.indexing.shared.core-IU-241.14494.240" />
+        <option value="bundled-js-predefined-1d06a55b98c1-74d2a5396914-JavaScript-IU-241.14494.240" />
+      </set>
+    </attachedChunks>
+  </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
@@ -73,6 +81,7 @@
       <updated>1713760526341</updated>
       <workItem from="1713760527499" duration="34000" />
       <workItem from="1713984533915" duration="70000" />
+      <workItem from="1714059269625" duration="11930000" />
     </task>
     <servers />
   </component>

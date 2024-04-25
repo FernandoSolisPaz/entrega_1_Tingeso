@@ -1,7 +1,5 @@
-import { useState } from "react";
-import React from 'react';
-import DatePicker from '@mui/x-date-pickers'
-import { Link, useNavigate } from "react-router-dom";
+import {useEffect, useState} from "react";
+import { Link, useParams, useNavigate } from "react-router-dom";
 import carService from "../services/car.service.js";
 import Box from "@mui/material/Box";
 import TextField from "@mui/material/TextField";
@@ -11,35 +9,74 @@ import MenuItem from "@mui/material/MenuItem";
 import SaveIcon from "@mui/icons-material/Save";
 
 const RegisterCar = () => {
-    const [carPlate, setCarPlate] = useState("");
+    const [plate, setPlate] = useState("");
     const [carBrandId, setCarBrandId] = useState("");
     const [model, setModel] = useState("");
-    const [type, setType] = useState("")
-    const [yearOfFabrication, setYearOfFabrication] = React.useState<{ dateFrom: Date | null, dateTo: Date | null, selected: 'string' | 'number'}>({ dateFrom: new Date(), datoTo: new Date(), selected: -1});
+    const [type, setType] = useState("");
+    const [yearOfFabrication, setYearOfFabrication] = useState("");
     const [motor, setMotor] = useState("");
     const [numberOfSeats, setNumberOfSeats] = useState("");
     const [kilometers, setKilometers] = useState("");
+    const {plateURL} = useParams();
     const navigate = useNavigate();
-    let titleCreateCarForm = 'New Car';
+    const [titleCarForm, setCarForm] = useState("");
+
     const saveCar = (c) => {
         c.preventDefault();
 
-        const car = { carPlate, carBrandId, model, type, yearOfFabrication,motor,numberOfSeats, kilometers};
-
+        const car = { plate, carBrandId, model, type, yearOfFabrication, motor, numberOfSeats, kilometers};
+        if(plateURL){
         carService
-            .create(car)
+            .update(car)
             .then((response) =>{
-                console.log("Car has been added", response.data);
-                navigate("/home");
+                console.log("Car has been updated", response.data);
+                navigate("/cars/list");
             })
             .catch((error) => {
                 console.log(
-                    "An Error has occurred in the creation of the new car",
+                    "An Error has occurred in the moddified of the car",
                     error
                 );
             });
+    } else {
+            carService
+                .create(car)
+                .then((response) => {
+                    console.log(
+                        "The car has succefully been registered", response.data);
+                    navigate("/cars/list");
+                })
+                .catch((error) => {
+                    console.log(
+                        "An error has occurred trying to register the new car.",
+                        error
+                    );
+                });
+        }
     };
 
+    useEffect(() => {
+        if(plateURL){
+            setCarForm("Edit Car");
+            carService
+                .get(plateURL)
+                .then((car) => {
+                    setPlate(car.data.plate);
+                    setCarBrandId(car.data.carBrandId);
+                    setModel(car.data.model);
+                    setType(car.data.type);
+                    setYearOfFabrication(car.data.yearOfFabrication);
+                    setMotor(car.data.motor);
+                    setNumberOfSeats(car.data.numberOfSeats);
+                    setKilometers(car.data.kilometers);
+                })
+                .catch((error) => {
+                    console.log("An error has occurred:", error);
+                });
+        } else {
+            setCarForm("New Car");
+        }
+    }, []);
     return(
         <Box
             display="flex"
@@ -48,17 +85,17 @@ const RegisterCar = () => {
             justifyContent="center"
             component="form"
         >
-            <h3>{titleCreateCarForm}</h3>
+            <h3>{titleCarForm}</h3>
             <hr />
             <form style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
                 <div style={{ display: 'flex', flexDirection: 'row', justifyContent: 'space-between', width: '100%', marginBottom: '1rem' }}>
                     <FormControl style={{ width: '49%' }}>
                         <TextField
-                            id="carPlate"
-                            label="CarPlate"
-                            value={carPlate}
+                            id="plate"
+                            label="Car Plate"
+                            value={plate}
                             variant="standard"
-                            onChange={(c) => setCarPlate(c.target.value)}
+                            onChange={(c) => setPlate(c.target.value)}
                             helperText="Ej. CGZA96"
                         />
                     </FormControl>
@@ -141,25 +178,21 @@ const RegisterCar = () => {
                         >
                             <MenuItem value={"0"}>Gasoline</MenuItem>
                             <MenuItem value={"1"}>Diesel</MenuItem>
-                            <MenuItem value={"2"}>Hibrid</MenuItem>
+                            <MenuItem value={"2"}>Hybrid</MenuItem>
                             <MenuItem value={"3"}>Electric</MenuItem>
                         </TextField>
                     </FormControl>
-                    </div>
-                    <div style={{ width: '49%' }}>
-                        <FormControl style={{ width: '100%', marginBottom: '1rem' }}>
-                            <DatePicker
-                                disableFuture
-                                label='Responsive'
-                                openTo='year'
-                                views={['year', 'month', 'day']}
-                                value={yearOfFabrication.dateFrom}
-                                onChange={(newValue) => {
-                                setYearOfFabrication({...yearOfFabrication, dateFrom: newValue})
-                            }}
-                            renderInput={(params) => <TextField {...params}/>}
-                            />
-                        </FormControl>
+                    <FormControl style={{ width: '49%' }}>
+                        <TextField
+                            id="yearOfFabrication"
+                            label="Year of Fabrication"
+                            type="number"
+                            value={yearOfFabrication}
+                            variant="standard"
+                            onChange={(c) => setYearOfFabrication(c.target.value)}
+                            helperText="Ej. 2002"
+                        />
+                    </FormControl>
                     </div>
 
 
@@ -178,7 +211,7 @@ const RegisterCar = () => {
                 </div>
             </form>
             <hr />
-            <Link to="/home">Back to Home</Link>
+            <Link to="/cars/list">Return to the list</Link>
         </Box>
 
 

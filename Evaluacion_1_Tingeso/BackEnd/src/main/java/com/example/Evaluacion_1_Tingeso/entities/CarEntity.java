@@ -4,7 +4,6 @@ package com.example.Evaluacion_1_Tingeso.entities;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import java.time.LocalDate;
 import jakarta.persistence.*;
 
 @Entity
@@ -34,7 +33,7 @@ public class CarEntity {
     private int type;
 
     @Column(name = "yearOfFabrication")
-    private LocalDate yearOfFabrication;
+    private int yearOfFabrication;
 
     /*
     * Gasolina = 0

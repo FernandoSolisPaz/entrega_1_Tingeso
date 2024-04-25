@@ -1,4 +1,3 @@
-import * as React from "react";
 import Box from "@mui/material/Box";
 import Drawer from "@mui/material/Drawer";
 import List from "@mui/material/List";
@@ -6,10 +5,12 @@ import Divider from "@mui/material/Divider";
 import ListItemButton from "@mui/material/ListItemButton";
 import ListItemIcon from "@mui/material/ListItemIcon";
 import ListItemText from "@mui/material/ListItemText";
-import PeopleAltIcon from "@mui/icons-material/PeopleAlt";
+import AttachMoneyIcon from '@mui/icons-material/AttachMoney';
+import DirectionsCarIcon from '@mui/icons-material/DirectionsCar';
 import HomeIcon from "@mui/icons-material/Home";
 import { useNavigate } from "react-router-dom";
 
+// eslint-disable-next-line react/prop-types
 export default function Sidemenu({ open, toggleDrawer}){
     const navigate = useNavigate();
 
@@ -28,11 +29,17 @@ export default function Sidemenu({ open, toggleDrawer}){
 
                 <Divider />
 
-                <ListItemButton onClick={() => navigate("/cars/add")}>
+                <ListItemButton onClick={() => navigate("/cars/list")}>
                     <ListItemIcon>
-                        <PeopleAltIcon />
+                        <DirectionsCarIcon />
                     </ListItemIcon>
-                    <ListItemText primary="RegisterCar" />
+                    <ListItemText primary="Car List" />
+                </ListItemButton>
+                <ListItemButton onClick={() => navigate("/car_brand/register")}>
+                    <ListItemIcon>
+                        <AttachMoneyIcon />
+                    </ListItemIcon>
+                    <ListItemText primary="Register Car Brand" />
                 </ListItemButton>
             </List>
         </Box>
