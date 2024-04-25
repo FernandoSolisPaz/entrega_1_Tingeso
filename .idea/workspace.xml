@@ -1,7 +1,37 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="0cafeff3-2aa4-419c-97e4-79f189bd8592" name="Changes" comment="" />
+    <list default="true" id="0cafeff3-2aa4-419c-97e4-79f189bd8592" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/Evaluacion_1_Tingeso/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Evaluacion_1_Tingeso/.mvn/wrapper/maven-wrapper.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Evaluacion_1_Tingeso/.mvn/wrapper/maven-wrapper.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Evaluacion_1_Tingeso/mvnw" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Evaluacion_1_Tingeso/mvnw.cmd" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Evaluacion_1_Tingeso/pom.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Evaluacion_1_Tingeso/src/main/java/com/example/Evaluacion_1_Tingeso/Evaluacion1TingesoApplication.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Evaluacion_1_Tingeso/src/main/java/com/example/Evaluacion_1_Tingeso/controllers/CarController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Evaluacion_1_Tingeso/src/main/java/com/example/Evaluacion_1_Tingeso/controllers/Car_brandController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Evaluacion_1_Tingeso/src/main/java/com/example/Evaluacion_1_Tingeso/controllers/ReceiptController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Evaluacion_1_Tingeso/src/main/java/com/example/Evaluacion_1_Tingeso/controllers/ReceiptRepairsController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Evaluacion_1_Tingeso/src/main/java/com/example/Evaluacion_1_Tingeso/controllers/RepairsController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Evaluacion_1_Tingeso/src/main/java/com/example/Evaluacion_1_Tingeso/entities/CarEntity.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Evaluacion_1_Tingeso/src/main/java/com/example/Evaluacion_1_Tingeso/entities/Car_brandEntity.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Evaluacion_1_Tingeso/src/main/java/com/example/Evaluacion_1_Tingeso/entities/ReceiptEntity.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Evaluacion_1_Tingeso/src/main/java/com/example/Evaluacion_1_Tingeso/entities/ReceiptRepairsEntity.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Evaluacion_1_Tingeso/src/main/java/com/example/Evaluacion_1_Tingeso/entities/RepairsEntity.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Evaluacion_1_Tingeso/src/main/java/com/example/Evaluacion_1_Tingeso/repositories/CarRepository.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Evaluacion_1_Tingeso/src/main/java/com/example/Evaluacion_1_Tingeso/repositories/Car_brandRepository.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Evaluacion_1_Tingeso/src/main/java/com/example/Evaluacion_1_Tingeso/repositories/ReceiptRepairsRepository.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Evaluacion_1_Tingeso/src/main/java/com/example/Evaluacion_1_Tingeso/repositories/ReceiptRepository.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Evaluacion_1_Tingeso/src/main/java/com/example/Evaluacion_1_Tingeso/repositories/RepairsRepository.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Evaluacion_1_Tingeso/src/main/java/com/example/Evaluacion_1_Tingeso/services/CarService.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Evaluacion_1_Tingeso/src/main/java/com/example/Evaluacion_1_Tingeso/services/Car_brandService.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Evaluacion_1_Tingeso/src/main/java/com/example/Evaluacion_1_Tingeso/services/ReceiptRepairsService.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Evaluacion_1_Tingeso/src/main/java/com/example/Evaluacion_1_Tingeso/services/ReceiptService.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Evaluacion_1_Tingeso/src/main/java/com/example/Evaluacion_1_Tingeso/services/RepairsService.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Evaluacion_1_Tingeso/src/main/resources/application.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Evaluacion_1_Tingeso/src/test/java/com/example/Evaluacion_1_Tingeso/Evaluacion1TingesoApplicationTests.java" beforeDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -13,9 +43,9 @@
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
   </component>
-  <component name="ProjectColorInfo"><![CDATA[{
-  "associatedIndex": 3
-}]]></component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 3
+}</component>
   <component name="ProjectId" id="2fROfHIADBx4Ww6KGY4hJnN10r8" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
@@ -25,9 +55,10 @@
   "keyToString": {
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
+    "WebServerToolWindowFactoryState": "false",
     "git-widget-placeholder": "main",
     "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "C:/Users/Fernando Solis Paz/Desktop/entrega_1_Tingeso",
+    "last_opened_file_path": "C:/Users/Nano solis/Desktop/entrega_1_Tingeso/Evaluacion_1_Tingeso/BackEnd",
     "nodejs_package_manager_path": "npm",
     "vue.rearranger.settings.migration": "true"
   }
@@ -41,6 +72,7 @@
       <option name="presentableId" value="Default" />
       <updated>1713760526341</updated>
       <workItem from="1713760527499" duration="34000" />
+      <workItem from="1713984533915" duration="70000" />
     </task>
     <servers />
   </component>
