@@ -13,7 +13,7 @@ public interface ReceiptRepository extends JpaRepository<ReceiptEntity, Long> {
 
     List<ReceiptEntity> findByCarPlate(String carPlate);
 
-    @Query(value = "SELECT COUNT(re) FROM ReceiptEntity re WHERE re.carPlate = :car_plate AND re.workshopInDate >= CURRENT_DATE - INTERVAL '12 months'", nativeQuery = true)
+    @Query(value = "SELECT COUNT(re) FROM Receipt re WHERE re.car_plate = :car_plate AND re.workshop_in_date >= CURRENT_DATE - INTERVAL '12 months'", nativeQuery = true)
     int countReceiptEntitiesByNumberOfRepairsIn12Months(@Param("car_plate") String car_plate);
 
 }

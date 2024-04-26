@@ -55,11 +55,8 @@ const RegisterRepair = () => {
 
 
 
-    const handleCarPlateChange = (event) => {
-        const valor = event.target.value;
-        setCarPlate(valor);
-
-        if (valor.trim() !== '') {
+    const handleCarPlateChange = (value) => {
+        if (value.trim() !== '') {
             setCamp2(true);
         } else {
             setCamp2(false);
@@ -95,7 +92,10 @@ const RegisterRepair = () => {
                         label="Car Plate"
                         value={carPlate}
                         variant="standard"
-                        onChange={handleCarPlateChange}
+                        onChange={(r) => {
+                            setCarPlate(r.target.value);
+                            handleCarPlateChange(r.target.value);
+                        }}
                         helperText="Ej. CGZA96"
                     />
                 </FormControl>
