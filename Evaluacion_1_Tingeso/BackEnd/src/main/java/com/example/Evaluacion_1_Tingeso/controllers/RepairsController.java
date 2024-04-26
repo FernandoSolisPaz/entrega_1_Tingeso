@@ -39,6 +39,12 @@ public class RepairsController {
         return ResponseEntity.ok(repairs);
     }
 
+    @GetMapping("/byMotorAndName/{id}/{name}")
+    public ResponseEntity<RepairsEntity> getRepairByMotorAndName(@PathVariable int id, @PathVariable String name) {
+        RepairsEntity repair = repairsService.getByMotorIdAndRepairName(id, name);
+        return ResponseEntity.ok(repair);
+    }
+
     @PostMapping("/")
     public ResponseEntity<RepairsEntity> saveRepair(@RequestBody RepairsEntity repair) {
         RepairsEntity repairNew = repairsService.saveRepair(repair);

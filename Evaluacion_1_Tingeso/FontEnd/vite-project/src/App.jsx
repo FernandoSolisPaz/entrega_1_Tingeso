@@ -6,6 +6,8 @@ import NotFound from './components/NotFound'
 import RegisterCar from "./components/RegisterCar.jsx";
 import RegisterBrandBond from "./components/RegisterBrandBond.jsx";
 import CarList from "./components/CarList.jsx";
+import CarBrandList from "./components/CarBrandList.jsx";
+import RegisterRepair from "./components/RegisterRepair.jsx";
 function App() {
   return (
       <Router>
@@ -14,9 +16,12 @@ function App() {
               <Routes>
                   <Route path="/home" element={<Home/>} />
                   <Route path="/cars/list" element={<CarList/>}/>
+                  <Route path="/car_brand/list" element={<CarBrandList/>}/>
                   <Route path="/cars/add" element={<RegisterCar/>} />
                   <Route path="/cars/edit/:plateURL" element={<RegisterCar/>}/>
                   <Route path="/car_brand/register" element={<RegisterBrandBond/>} />
+                  <Route path="/car_brand/edit/:brandId" element={<RegisterBrandBond/>}/>
+                  <Route path="/repair/register" element={<RegisterRepair/>}/>
                   <Route path="*" element={<NotFound/>} />
               </Routes>
           </div>

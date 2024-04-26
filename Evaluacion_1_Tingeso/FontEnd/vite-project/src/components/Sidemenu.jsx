@@ -7,6 +7,7 @@ import ListItemIcon from "@mui/material/ListItemIcon";
 import ListItemText from "@mui/material/ListItemText";
 import AttachMoneyIcon from '@mui/icons-material/AttachMoney';
 import DirectionsCarIcon from '@mui/icons-material/DirectionsCar';
+import ConstructionIcon from '@mui/icons-material/Construction';
 import HomeIcon from "@mui/icons-material/Home";
 import { useNavigate } from "react-router-dom";
 
@@ -35,11 +36,17 @@ export default function Sidemenu({ open, toggleDrawer}){
                     </ListItemIcon>
                     <ListItemText primary="Car List" />
                 </ListItemButton>
-                <ListItemButton onClick={() => navigate("/car_brand/register")}>
+                <ListItemButton onClick={() => navigate("/car_brand/list")}>
                     <ListItemIcon>
                         <AttachMoneyIcon />
                     </ListItemIcon>
-                    <ListItemText primary="Register Car Brand" />
+                    <ListItemText primary="Car Brand" />
+                </ListItemButton>
+                <ListItemButton onClick={() => navigate("/repair/register")}>
+                    <ListItemIcon>
+                        <ConstructionIcon />
+                    </ListItemIcon>
+                    <ListItemText primary="Register Repairs" />
                 </ListItemButton>
             </List>
         </Box>

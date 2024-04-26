@@ -1,7 +1,7 @@
-import React, { useState } from "react";
+import {useEffect, useState } from "react";
 import Box from "@mui/material/Box";
 import brandService from "../services/brand.service.js";
-import { Link, useNavigate } from "react-router-dom";
+import {Link, useNavigate, useParams} from "react-router-dom";
 import TextField from "@mui/material/TextField";
 import Button from "@mui/material/Button";
 import FormControl from "@mui/material/FormControl";
@@ -13,26 +13,60 @@ const RegisterBrandBond = () => {
     const [brandName, setBrandName] = useState("");
     const [bondAvailable, setBondAvailable] = useState("");
     const [amount, setAmount] = useState("");
+    const {brandId} = useParams();
     const navigate = useNavigate();
-    let titleRegisterNewBrand = "New Brand Bond";
+    const [titleBrandForm, setBrandForm]  = useState("");
 
     const saveBrandBond = (b) => {
         b.preventDefault();
 
         const brand = { brandName, bondAvailable, amount};
-        brandService
-            .create(brand)
-            .then((response) =>{
-                console.log("Brand has been registed", response.data);
-                navigate("/home");
-            })
-            .catch((error) => {
-                console.log(
-                    "An error has occurred in the register of the brand",
-                    error
-                );
-            });
+        if(brandId) {
+            brandService
+                .update(brand)
+                .then((response) => {
+                    console.log("Brand has been updated", response.data);
+                    navigate("/home");
+                })
+                .catch((error) => {
+                    console.log(
+                        "An error has occurred in the updating of the brand",
+                        error
+                    );
+                });
+        } else{
+            brandService
+                .create(brand)
+                .then((response) => {
+                    console.log("Brand has been registered", response.data);
+                    navigate("/home");
+                })
+                .catch((error) => {
+                    console.log(
+                        "An error has occurred in the register of the brand",
+                        error
+                    );
+                });
+        }
     };
+
+    useEffect(() => {
+        if(brandId){
+            setBrandForm("Edit Brand");
+            brandService
+                .get(brandId)
+                .then((brand) => {
+                    setBrandName(brand.data.brandName);
+                    setBondAvailable(brand.data.bondAvailable);
+                    setAmount(brand.data.amount);
+                })
+                .catch((error) => {
+                    console.log("An error has occurred", error);
+                });
+        } else {
+            setBrandForm("New Brand Bond")
+        }
+    }, []);
 
     return(
         <Box
@@ -42,7 +76,7 @@ const RegisterBrandBond = () => {
             justifyContent="center"
             component="form"
         >
-            <h3>{titleRegisterNewBrand}</h3>
+            <h3>{titleBrandForm}</h3>
             <hr />
             <form style={{display: 'flex', flexDirection: 'column', alignItems: 'center'}}>
                 <div style={{
@@ -109,7 +143,7 @@ const RegisterBrandBond = () => {
                 </div>
             </form>
             <hr/>
-            <Link to="/home">Back to Home</Link>
+            <Link to="/car_brand/list">Back to the list</Link>
         </Box>
     );
 };
