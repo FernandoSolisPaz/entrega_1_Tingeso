@@ -11,6 +11,7 @@ import Paper from "@mui/material/Paper";
 import Button from "@mui/material/Button";
 import EditIcon from "@mui/icons-material/Edit";
 import DeleteIcon from "@mui/icons-material/Delete";
+import VisibilityIcon from '@mui/icons-material/Visibility';
 
 const ReceiptList = () => {
     const [receipts, setReceipts] = useState([]);
@@ -60,6 +61,11 @@ const ReceiptList = () => {
         navigate(`/receipts/edit/${id}`);
     };
 
+    const handleShowDetails = (id) => {
+        console.log("Showing details", id);
+        navigate(`/receipts/details/${id}`);
+    }
+
     return (
         <TableContainer component={Paper}>
             <br /> <br />
@@ -91,6 +97,16 @@ const ReceiptList = () => {
                                 <TableCell align="left">{receipt.workshopInDate}</TableCell>
                                 <TableCell align="left">{receipt.totalAmount}</TableCell>
                                 <TableCell>
+                                    <Button
+                                        variant="contained"
+                                        color="info"
+                                        size="small"
+                                        onClick={() => handleShowDetails(receipt.id)}
+                                        style={{ marginLeft: "0.5rem" }}
+                                        startIcon={<VisibilityIcon />}
+                                    >
+                                        Show Details
+                                    </Button>
                                     <Button
                                         variant="contained"
                                         color="info"
