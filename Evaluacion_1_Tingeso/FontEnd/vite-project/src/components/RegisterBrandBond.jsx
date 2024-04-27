@@ -13,20 +13,20 @@ const RegisterBrandBond = () => {
     const [brandName, setBrandName] = useState("");
     const [bondAvailable, setBondAvailable] = useState("");
     const [amount, setAmount] = useState("");
-    const {brandId} = useParams();
+    const {id} = useParams();
     const navigate = useNavigate();
     const [titleBrandForm, setBrandForm]  = useState("");
 
     const saveBrandBond = (b) => {
         b.preventDefault();
 
-        const brand = { brandName, bondAvailable, amount};
-        if(brandId) {
+        const brand = { brandName, bondAvailable, amount, id};
+        if(id) {
             brandService
                 .update(brand)
                 .then((response) => {
                     console.log("Brand has been updated", response.data);
-                    navigate("/home");
+                    navigate("/car_brand/list");
                 })
                 .catch((error) => {
                     console.log(
@@ -39,7 +39,7 @@ const RegisterBrandBond = () => {
                 .create(brand)
                 .then((response) => {
                     console.log("Brand has been registered", response.data);
-                    navigate("/home");
+                    navigate("/car_brand/list");
                 })
                 .catch((error) => {
                     console.log(
@@ -51,10 +51,10 @@ const RegisterBrandBond = () => {
     };
 
     useEffect(() => {
-        if(brandId){
+        if(id){
             setBrandForm("Edit Brand");
             brandService
-                .get(brandId)
+                .get(id)
                 .then((brand) => {
                     setBrandName(brand.data.brandName);
                     setBondAvailable(brand.data.bondAvailable);

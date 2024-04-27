@@ -8,6 +8,8 @@ import RegisterBrandBond from "./components/RegisterBrandBond.jsx";
 import CarList from "./components/CarList.jsx";
 import CarBrandList from "./components/CarBrandList.jsx";
 import RegisterRepair from "./components/RegisterRepair.jsx";
+import ReceiptList from "./components/ReceiptList.jsx";
+import ReceiptEdit from "./components/ReceiptEdit.jsx";
 function App() {
   return (
       <Router>
@@ -20,8 +22,10 @@ function App() {
                   <Route path="/cars/add" element={<RegisterCar/>} />
                   <Route path="/cars/edit/:plateURL" element={<RegisterCar/>}/>
                   <Route path="/car_brand/register" element={<RegisterBrandBond/>} />
-                  <Route path="/car_brand/edit/:brandId" element={<RegisterBrandBond/>}/>
+                  <Route path="/car_brand/edit/:id" element={<RegisterBrandBond/>}/>
                   <Route path="/repair/register" element={<RegisterRepair/>}/>
+                  <Route path="/receipts/list/:carPlate" element={<ReceiptList/>}/>
+                  <Route path="/receipts/edit/:id" element={<ReceiptEdit/>}/>
                   <Route path="*" element={<NotFound/>} />
               </Routes>
           </div>

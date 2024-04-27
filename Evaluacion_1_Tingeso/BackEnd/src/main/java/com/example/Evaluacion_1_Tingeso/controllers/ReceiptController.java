@@ -48,16 +48,16 @@ public class ReceiptController {
         return ResponseEntity.ok(repairUpdated);
     }
 
-    @PutMapping("/modify_out_date/{receiptId}")
-    public ResponseEntity<ReceiptEntity> mod_out_dates(@PathVariable Long receiptId, @RequestParam("workshopOutDate") LocalDate workshopOutDate, @RequestParam("workshopOutHour") LocalTime workshopOutHour) {
+    @PutMapping("/modify_out_date/{id}")
+    public ResponseEntity<ReceiptEntity> mod_out_dates(@PathVariable Long id, @RequestParam("workshopOutDate") LocalDate workshopOutDate, @RequestParam("workshopOutHour") LocalTime workshopOutHour) {
         LocalTime dummy = workshopOutHour;
-        ReceiptEntity moddedReceipt = receiptService.modifyOutDatesReceipt(receiptId, workshopOutDate, dummy);
+        ReceiptEntity moddedReceipt = receiptService.modifyOutDatesReceipt(id, workshopOutDate, dummy);
         return ResponseEntity.ok(moddedReceipt);
     }
 
-    @PutMapping("/modify_pickUp_date/{receiptId}")
-    public ResponseEntity<ReceiptEntity> mod_pickUp_dates(@PathVariable Long receiptId, @RequestParam("pickUpDate") LocalDate pickUpDate, @RequestParam("pickUpHour") LocalTime pickUpHour) {
-        ReceiptEntity moddedReceipt = receiptService.modifyPickUpDatesReceipt(receiptId, pickUpDate, pickUpHour);
+    @PutMapping("/modify_pickUp_date/{id}")
+    public ResponseEntity<ReceiptEntity> mod_pickUp_dates(@PathVariable Long id, @RequestParam("pickUpDate") LocalDate pickUpDate, @RequestParam("pickUpHour") LocalTime pickUpHour) {
+        ReceiptEntity moddedReceipt = receiptService.modifyPickUpDatesReceipt(id, pickUpDate, pickUpHour);
         return ResponseEntity.ok(moddedReceipt);
     }
 

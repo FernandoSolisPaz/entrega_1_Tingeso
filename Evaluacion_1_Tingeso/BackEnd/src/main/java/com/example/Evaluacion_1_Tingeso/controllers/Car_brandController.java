@@ -23,7 +23,7 @@ public class Car_brandController {
 
     @GetMapping("/{id}")
     public ResponseEntity<Car_brandEntity> getCarBrandById(@PathVariable Long id) {
-        Car_brandEntity car_brand = car_BrandService.getCarBrandByid(id);
+        Car_brandEntity car_brand = car_BrandService.getCarBrandById(id);
         return ResponseEntity.ok(car_brand);
     }
 

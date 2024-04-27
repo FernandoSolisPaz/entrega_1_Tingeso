@@ -3,22 +3,16 @@ package com.example.Evaluacion_1_Tingeso.services;
 import com.example.Evaluacion_1_Tingeso.entities.ReceiptEntity;
 import com.example.Evaluacion_1_Tingeso.repositories.ReceiptRepository;
 import com.example.Evaluacion_1_Tingeso.entities.Car_brandEntity;
-import com.example.Evaluacion_1_Tingeso.services.Car_brandService;
 import com.example.Evaluacion_1_Tingeso.entities.ReceiptRepairsEntity;
-import com.example.Evaluacion_1_Tingeso.services.ReceiptRepairsService;
 import com.example.Evaluacion_1_Tingeso.entities.RepairsEntity;
-import com.example.Evaluacion_1_Tingeso.services.RepairsService;
 import com.example.Evaluacion_1_Tingeso.entities.CarEntity;
-import com.example.Evaluacion_1_Tingeso.services.CarService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.cglib.core.Local;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.time.LocalDate;
 import java.time.LocalTime;
 import java.time.DayOfWeek;
-import java.time.Period;
 import java.time.LocalDateTime;
 import java.time.temporal.ChronoUnit;
 @Service
@@ -63,7 +57,7 @@ public class ReceiptService {
         newReceipt.setCarPlate(receipt.getCarPlate());
         String carPlate = receipt.getCarPlate();
         CarEntity car_dummy1 = carService.getCarByPlate(carPlate);
-        Car_brandEntity car_brand_dummy1 = car_brandService.getCarBrandByid(car_dummy1.getCarBrandId());
+        Car_brandEntity car_brand_dummy1 = car_brandService.getCarBrandById(car_dummy1.getCarBrandId());
         if (car_brand_dummy1.getBondAvailable() > 0) {
             newReceipt.setBrandBond(car_brand_dummy1.getAmount());
             car_brand_dummy1.setBondAvailable(car_brand_dummy1.getBondAvailable() - 1);
@@ -147,12 +141,12 @@ public class ReceiptService {
             }
             RepairsEntity repair = repairsService.getByMotorIdAndRepairName(typeOfMotor, repairName);
             ReceiptRepairsEntity dummy2 = new ReceiptRepairsEntity();
-            dummy2.setReceiptId(dummy.getReceiptId());
+            dummy2.setReceiptId(dummy.getId());
             dummy2.setRepairId((repair.getRepairId()));
             receiptRepairsService.saveReceiptRepairs(dummy2);
         }
 
-        List<ReceiptRepairsEntity> repairs = receiptRepairsService.getByReceiptId(dummy.getReceiptId());
+        List<ReceiptRepairsEntity> repairs = receiptRepairsService.getByReceiptId(dummy.getId());
         int repairsSum = 0;
         for (ReceiptRepairsEntity receiptRepairsDummy : repairs) {
 

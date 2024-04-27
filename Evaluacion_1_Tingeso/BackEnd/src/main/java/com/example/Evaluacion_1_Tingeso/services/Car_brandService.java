@@ -18,10 +18,8 @@ public class Car_brandService {
 
     public Car_brandEntity saveCarBrand(Car_brandEntity carBrand){return car_brandRepository.save(carBrand); }
 
-    public Car_brandEntity getCarBrandByid(Long id) {
-        Optional<Car_brandEntity> Car_brandOptional = car_brandRepository.findById(id);
-        if(Car_brandOptional.isEmpty()) throw new RuntimeException("La CarBrand " + id + " no existe. ");
-        return Car_brandOptional.get(); }
+    public Car_brandEntity getCarBrandById(Long id) { return car_brandRepository.findById(id).get(); }
+
     public Car_brandEntity getCarBrandByName(String name){ return car_brandRepository.findByBrandName(name); }
 
     public Car_brandEntity updateCarBrand(Car_brandEntity carBrand){ return car_brandRepository.save(carBrand); }

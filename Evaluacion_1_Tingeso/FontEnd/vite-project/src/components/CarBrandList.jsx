@@ -35,9 +35,9 @@ const CarBrandList = () => {
         init();
     }, []);
 
-    const handleEdit = (brandId) => {
-        console.log("Printing id", brandId);
-        navigate(`/car_brand/edit/${brandId}`);
+    const handleEdit = (id) => {
+        console.log("Printing id", id);
+        navigate(`/car_brand/edit/${id}`);
     };
 
     return (
@@ -65,10 +65,10 @@ const CarBrandList = () => {
                 <TableBody>
                     {carBrands.map((carBrand) => (
                         <TableRow
-                            key={carBrand.brandId}
+                            key={carBrand.id}
                             sx={{ "&:last-child td, &:last-child th": { border: 0} }}
                         >
-                            <TableCell align="left">{carBrand.brandId}</TableCell>
+                            <TableCell align="left">{carBrand.id}</TableCell>
                             <TableCell align="left">{carBrand.brandName}</TableCell>
                             <TableCell align="left">{carBrand.bondAvailable}</TableCell>
                             <TableCell align="left">{carBrand.bondAvailable}</TableCell>
@@ -77,7 +77,7 @@ const CarBrandList = () => {
                                     variant="contained"
                                     color="info"
                                     size="small"
-                                    onClick={() => handleEdit(carBrand.brandId)}
+                                    onClick={() => handleEdit(carBrand.id)}
                                     style={{ marginLeft: "0.5rem" }}
                                     startIcon={<EditIcon />}
                                 >

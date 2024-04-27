@@ -12,6 +12,7 @@ import Paper from "@mui/material/Paper";
 import Button from "@mui/material/Button";
 import EditIcon from "@mui/icons-material/Edit";
 import DeleteIcon from "@mui/icons-material/Delete";
+import VisibilityIcon from '@mui/icons-material/Visibility';
 
 const CarList = () => {
     const [cars, setCars] = useState([]);
@@ -39,7 +40,7 @@ const CarList = () => {
     const handleDelete = (plate) => {
         console.log("Printing Plate", plate);
         const confirmDelete = window.confirm(
-            "¿Do you want to delete this car?"
+            "Do you want to delete this car?"
         );
         if(confirmDelete) {
             carService
@@ -90,6 +91,11 @@ const CarList = () => {
     const handleEdit = (plate) => {
         console.log("Printing id", plate);
         navigate(`/cars/edit/${plate}`);
+    };
+
+    const handleReceiptShow = (plate) => {
+        console.log("Printing Plate", plate);
+        navigate(`/receipts/list/${plate}`);
     };
 
     return (
@@ -147,6 +153,17 @@ const CarList = () => {
                             <TableCell align="left">{replaceIdMotor(car.motor)}</TableCell>
                             <TableCell align="left">{car.kilometers}</TableCell>
                             <TableCell>
+                                <Button
+                                    variant="contained"
+                                    color="info"
+                                    size="small"
+                                    onClick={() => handleReceiptShow(car.plate)}
+                                    style={{ marginLeft: "0.5rem" }}
+                                    startIcon={<VisibilityIcon />}
+                                >
+                                    Show Receipts
+                                </Button>
+
                                 <Button
                                     variant="contained"
                                     color="info"

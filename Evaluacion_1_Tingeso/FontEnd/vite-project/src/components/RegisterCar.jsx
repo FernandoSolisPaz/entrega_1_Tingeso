@@ -214,9 +214,6 @@ const RegisterCar = () => {
             <Link to="/cars/list">Return to the list</Link>
         </Box>
 
-
-
-
     );
 };
 

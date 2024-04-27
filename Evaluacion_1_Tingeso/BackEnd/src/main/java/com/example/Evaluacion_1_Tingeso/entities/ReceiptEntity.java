@@ -16,8 +16,8 @@ public class ReceiptEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "receiptId")
-    private Long receiptId;
+    @Column(name = "id")
+    private Long id;
 
     @Column(name = "workshopInDate")
     private LocalDate workshopInDate;
