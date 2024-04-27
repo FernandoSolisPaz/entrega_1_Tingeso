@@ -1,8 +1,6 @@
 import { useState } from "react";
 import Box from "@mui/material/Box";
-import carService from "../services/car.service.js";
-import receiptService from "../services/receipt.service.js";
-import repairService from "../services/repair.service.js";
+import receiptService from "../services/receipt.service";
 import { useNavigate } from "react-router-dom";
 import TextField from "@mui/material/TextField";
 import Button from "@mui/material/Button";
@@ -15,32 +13,14 @@ const RegisterRepair = () => {
     const [carPlate, setCarPlate] = useState("");
     const [camp2Habilitated, setCamp2] = useState(false);
     const [repairIds, setRepairIds] = useState([]);
-    const [realRepairIds, setRealRepairIds] = useState([]);
-    const [repairEntityv, setRepairEntity] = useState(null);
-    const [carEntity, setCarEntity] = useState(null);
-    const [carMotorId, setCarMotorId] = useState(-1);
     const navigate = useNavigate();
     let tittle = "Register a repair for a car";
 
-    const saveReceipt = async (r) =>{
+    const saveReceipt = (r) =>{
         r.preventDefault();
-        setCarEntity(carService.get(carPlate));
-        setCarMotorId(carEntity.motor);
-        for (let i = 0; i < repairIds.length; i++) {
-            const Name = repairIds[i];
-            try {
-                const repairEntity = await repairService.getByMotorAndName(carMotorId,Name);
-                setRepairEntity(repairEntity);
-                // eslint-disable-next-line
-                setRealRepairIds([...realRepairIds, repairEntityv.repairId])
-            } catch (error) {
-                console.error('Error trying to bring the Repair:', error);
-            }
-
-        }
         const receipt = {carPlate}
-        receiptService
-            .create(receipt, realRepairIds)
+        console.log(carPlate);
+        receiptService.create(receipt, repairIds)
             .then(response => {
                 console.log("Receipt added successfully", response.data);
                 navigate("/home");
@@ -50,7 +30,6 @@ const RegisterRepair = () => {
                     error
                 );
             });
-
     }
 
 
@@ -104,57 +83,57 @@ const RegisterRepair = () => {
                     <FormControlLabel
                         control={<Checkbox onChange={handleCheckboxChange} disabled={!camp2Habilitated}/>}
                         label="Braking System"
-                        value="Braking System"
+                        value={0}
                     />
                     <FormControlLabel
                         control={<Checkbox onChange={handleCheckboxChange} disabled={!camp2Habilitated}/>}
                         label="Refrigeration System"
-                        value="Refrigeration System"
+                        value={1}
                     />
                     <FormControlLabel
                         control={<Checkbox onChange={handleCheckboxChange} disabled={!camp2Habilitated}/>}
                         label="Motor"
-                        value="Motor"
+                        value={2}
                     />
                     <FormControlLabel
                         control={<Checkbox onChange={handleCheckboxChange} disabled={!camp2Habilitated}/>}
                         label="Transmision"
-                        value="Transmision"
+                        value={3}
                     />
                     <FormControlLabel
                         control={<Checkbox onChange={handleCheckboxChange} disabled={!camp2Habilitated}/>}
                         label="Electric System"
-                        value="Electric System"
+                        value={4}
                     />
                     <FormControlLabel
                         control={<Checkbox onChange={handleCheckboxChange} disabled={!camp2Habilitated}/>}
                         label="Escape System"
-                        value="Escape System"
+                        value={5}
                     />
                     <FormControlLabel
                         control={<Checkbox onChange={handleCheckboxChange} disabled={!camp2Habilitated}/>}
                         label="Tyres and Wheels"
-                        value="Tyres and Wheels"
+                        value={6}
                     />
                     <FormControlLabel
                         control={<Checkbox onChange={handleCheckboxChange} disabled={!camp2Habilitated}/>}
                         label="Suspension and steering"
-                        value="Suspension and steering"
+                        value={7}
                     />
                     <FormControlLabel
                         control={<Checkbox onChange={handleCheckboxChange} disabled={!camp2Habilitated}/>}
                         label="AC and Heating System"
-                        value="AC and Heating System"
+                        value={8}
                     />
                     <FormControlLabel
                         control={<Checkbox onChange={handleCheckboxChange} disabled={!camp2Habilitated}/>}
                         label="Fuel System"
-                        value="Fuel System"
+                        value={9}
                     />
                     <FormControlLabel
                         control={<Checkbox onChange={handleCheckboxChange} disabled={!camp2Habilitated}/>}
                         label="Windshield and Glass"
-                        value="Windshield and Glass"
+                        value={10}
                     />
                 </FormControl>
                 <div style={{display: 'flex', justifyContent: 'center', width: '100%'}}>
