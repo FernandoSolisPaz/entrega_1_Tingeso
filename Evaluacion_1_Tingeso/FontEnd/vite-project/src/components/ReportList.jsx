@@ -17,7 +17,7 @@ const ReportList = () => {
     };
 
     const handleAvgRepairTypeReport = () =>{
-        navigate("/reportTimeTypeRepair");
+        navigate("/reportTimeRepair");
     };
 
     const handleMotorRepairReport = () =>{

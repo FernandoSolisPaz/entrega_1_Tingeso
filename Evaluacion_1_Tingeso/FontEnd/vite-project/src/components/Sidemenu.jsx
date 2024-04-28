@@ -55,6 +55,8 @@ export default function Sidemenu({ open, toggleDrawer}){
                         .createTypeRepairReport()
                     reportService
                         .createMotorRepairReport()
+                    reportService
+                        .createTimeRepairReport()
                     navigate("/report/list")
 
                 }}>

@@ -12,6 +12,10 @@ import SaveIcon from "@mui/icons-material/Save";
 import moment from "moment";
 
 const UpdateReceipt = () => {
+    const [outDatemod, setOutDatemod] = useState(false);
+    const [outTimemod, setOutTimemod] = useState(false);
+    const [pickDatemod, setPickDatemod] = useState(false);
+    const [pickTimemod, setPickTimemod] = useState(false);
     const [costOfRepair, setCostOfRepair] = useState("");
     const [totalAmount, setTotalAmount] = useState("");
     const [workshopInDate, setWorkshopInDate] = useState("");
@@ -25,9 +29,9 @@ const UpdateReceipt = () => {
     const [kilometersSurcharge, setKilometersSurcharge] = useState("");
     const {id} = useParams();
 
-    const [pickUpDate, setDatePickUp] = useState(new Date());
+    const [pickUpDate, setDatePickUp] = useState(null);
     const [pickUpHour, setPickUpHour] = useState(null);
-    const [workshopOutDate, setDateWorkshopOut] = useState(new Date());
+    const [workshopOutDate, setDateWorkshopOut] = useState(null);
     const [workshopOutHour, setTimeWorkshopOut] = useState(null);
 
     const [pickUpDateHolder, setDatePickUpHolder] = useState("");
@@ -49,7 +53,9 @@ const UpdateReceipt = () => {
     const updateReceipt = (r) => {
         r.preventDefault();
         const receipt = {costOfRepair, totalAmount, workshopInDate, workshopInHour, carPlate, brandBond, dayOfAttentionDisc, numberOfRepairsDisc, ageVehicleSurcharge, delayOfPickUpSurcharge, kilometersSurcharge, pickUpDateHolder, pickUpHourHolder, workshopOutDateHolder, workshopOutHourHolder, id};
-        if(receipt.workshopOutDateHolder != "" && receipt.workshopOutDateHolder != ""){
+        if(outDatemod && outTimemod){
+            setOutDatemod(false);
+            setOutTimemod(false);
             receiptService
                 .updateOutDate(receipt.id ,receipt.workshopOutDateHolder, receipt.workshopOutHourHolder)
                 .then((response) => {
@@ -61,7 +67,9 @@ const UpdateReceipt = () => {
                 );
             });
         }
-        if(receipt.pickUpDateHolder != "" && receipt.pickUpHourHolder != ""){
+        if(pickDatemod && pickTimemod){
+            setPickDatemod(false);
+            setPickTimemod(false);
             receiptService
                 .updatePickUpDate(receipt.id, receipt.pickUpDateHolder, receipt.pickUpHourHolder)
                 .then((response) => {
@@ -123,6 +131,7 @@ const UpdateReceipt = () => {
                     <FormControl style={{width: '49%'}}>
                         <LocalizationProvider dateAdapter={AdapterMoment}>
                             <DatePicker label="New Workshop Out Date" selected={workshopOutDate} onChange={(workshopOutDate) => {
+                                setOutDatemod(true);
                                 setDateWorkshopOutHolder(formatDate(workshopOutDate));
                             }} />
                         </LocalizationProvider>
@@ -130,7 +139,9 @@ const UpdateReceipt = () => {
                     <FormControl style={{width:'49%'}}>
                         <LocalizationProvider dateAdapter={AdapterMoment}>
                             <TimePicker label="New Workshop Out Hour" ampm={false} value={workshopOutHour} onChange={(newTime) => {
-                                setTimeWorkshopOutHolder(formatTime(newTime))}}/>
+                                setOutTimemod(true);
+                                setTimeWorkshopOutHolder(formatTime(newTime));
+                            }}/>
                         </LocalizationProvider>
                     </FormControl>
                 </div>
@@ -142,6 +153,7 @@ const UpdateReceipt = () => {
                     <FormControl style={{width: '49%'}}>
                         <LocalizationProvider dateAdapter={AdapterMoment}>
                             <DatePicker label="New PickUp date" selected={pickUpDate} onChange={(pickUpDate) => {
+                                setPickDatemod(true);
                                 setDatePickUpHolder(formatDate(pickUpDate));
                             }} />
                         </LocalizationProvider>
@@ -149,7 +161,9 @@ const UpdateReceipt = () => {
                     <FormControl style={{width: '49%'}}>
                         <LocalizationProvider dateAdapter={AdapterMoment}>
                             <TimePicker label="New PickUp Hour" ampm={false} value={pickUpHour} onChange={(newTimePickUp) => {
-                                setTimePickUpHolder(formatTime(newTimePickUp))}}/>
+                                setPickTimemod(true);
+                                setTimePickUpHolder(formatTime(newTimePickUp));
+                            }}/>
                         </LocalizationProvider>
                     </FormControl>
                 </div>

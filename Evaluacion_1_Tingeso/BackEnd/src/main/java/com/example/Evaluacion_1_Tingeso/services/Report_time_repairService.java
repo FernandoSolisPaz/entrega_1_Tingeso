@@ -57,9 +57,8 @@ public class Report_time_repairService {
             report_time_repairRepository.save(report_time_repair);
         }
 
-        List<ReceiptRepairsEntity> repairsDone = receiptRepairsService.getReceiptRepairs();
-        for (ReceiptRepairsEntity repair : repairsDone) {
-            ReceiptEntity receipt = receiptService.getReceiptById(repair.getReceiptId());
+        List<ReceiptEntity> repairsDone = receiptService.getReceipts();
+        for (ReceiptEntity receipt : repairsDone) {
             CarEntity car = carService.getCarByPlate(receipt.getCarPlate());
             Car_brandEntity brand = brandService.getCarBrandById(car.getCarBrandId());
             LocalDate inDate = receipt.getWorkshopInDate();

@@ -14,6 +14,7 @@ import ReceiptShow   from "./components/ReceiptShow.jsx";
 import ReportList from "./components/ReportList.jsx";
 import ReportTypeRepair from "./components/ReportTypeRepair.jsx";
 import ReportMotorRepair from "./components/ReportMotorRepair.jsx";
+import ReportTimeRepair from "./components/ReportTimeRepair.jsx";
 
 function App() {
   return (
@@ -35,6 +36,7 @@ function App() {
                   <Route path="/report/list" element={<ReportList />}/>
                   <Route path="/reportTypeRepair" element={<ReportTypeRepair/>}/>
                   <Route path="/reportMotorRepair" element={<ReportMotorRepair/>}/>
+                  <Route path="/reportTimeRepair" element={<ReportTimeRepair/>}/>
                   <Route path="*" element={<NotFound/>} />
               </Routes>
           </div>
