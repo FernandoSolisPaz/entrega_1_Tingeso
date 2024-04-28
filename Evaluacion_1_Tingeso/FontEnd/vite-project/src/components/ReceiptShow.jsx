@@ -1,7 +1,6 @@
 import { useEffect, useState} from "react";
-import {Link, useNavigate, useParams} from "react-router-dom";
+import { useNavigate, useParams} from "react-router-dom";
 import receiptService from "../services/receipt.service.js";
-import Table from "@mui/material/Table";
 import TableBody from "@mui/material/TableBody";
 import TableContainer from "@mui/material/TableContainer";
 import TableCell from "@mui/material/TableCell";
@@ -9,7 +8,6 @@ import TableRow from "@mui/material/TableRow";
 import Paper from "@mui/material/Paper";
 import Button from "@mui/material/Button";
 import Divider from "@mui/material/Divider";
-import EditIcon from "@mui/icons-material/Edit";
 import KeyboardReturnIcon from '@mui/icons-material/KeyboardReturn';
 
 const ReceiptShow = () => {

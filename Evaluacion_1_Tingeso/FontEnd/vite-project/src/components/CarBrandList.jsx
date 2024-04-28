@@ -71,7 +71,7 @@ const CarBrandList = () => {
                             <TableCell align="left">{carBrand.id}</TableCell>
                             <TableCell align="left">{carBrand.brandName}</TableCell>
                             <TableCell align="left">{carBrand.bondAvailable}</TableCell>
-                            <TableCell align="left">{carBrand.bondAvailable}</TableCell>
+                            <TableCell align="left">{carBrand.amount}</TableCell>
                             <TableCell>
                                 <Button
                                     variant="contained"

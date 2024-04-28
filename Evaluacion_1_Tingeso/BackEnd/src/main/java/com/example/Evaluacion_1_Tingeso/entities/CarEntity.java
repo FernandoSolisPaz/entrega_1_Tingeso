@@ -23,7 +23,7 @@ public class CarEntity {
     private String model;
 
     /*
-    * Sedan = 0
+    * Sedán = 0
     * Hatchback = 1
     * SUV = 2
     * Pickup = 3

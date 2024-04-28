@@ -11,6 +11,9 @@ import RegisterRepair from "./components/RegisterRepair.jsx";
 import ReceiptList from "./components/ReceiptList.jsx";
 import ReceiptEdit from "./components/ReceiptEdit.jsx";
 import ReceiptShow   from "./components/ReceiptShow.jsx";
+import ReportList from "./components/ReportList.jsx";
+import ReportTypeRepair from "./components/ReportTypeRepair.jsx";
+
 function App() {
   return (
       <Router>
@@ -28,6 +31,8 @@ function App() {
                   <Route path="/receipts/list/:carPlate" element={<ReceiptList/>}/>
                   <Route path="/receipts/edit/:id" element={<ReceiptEdit/>}/>
                   <Route path="/receipts/details/:id" element={<ReceiptShow/>}/>
+                  <Route path="/report/list" element={<ReportList />}/>
+                  <Route path="/reportTypeRepair" element={<ReportTypeRepair/>}/>
                   <Route path="*" element={<NotFound/>} />
               </Routes>
           </div>

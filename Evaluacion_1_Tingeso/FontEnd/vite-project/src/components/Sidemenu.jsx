@@ -10,6 +10,8 @@ import DirectionsCarIcon from '@mui/icons-material/DirectionsCar';
 import ConstructionIcon from '@mui/icons-material/Construction';
 import HomeIcon from "@mui/icons-material/Home";
 import { useNavigate } from "react-router-dom";
+import DescriptionIcon from '@mui/icons-material/Description';
+import reportService from '../services/report.service.js'
 
 // eslint-disable-next-line react/prop-types
 export default function Sidemenu({ open, toggleDrawer}){
@@ -47,6 +49,17 @@ export default function Sidemenu({ open, toggleDrawer}){
                         <ConstructionIcon />
                     </ListItemIcon>
                     <ListItemText primary="Register Repairs" />
+                </ListItemButton>
+                <ListItemButton onClick={() => {
+                    reportService
+                        .createTypeRepairReport()
+                    navigate("/report/list")
+
+                }}>
+                    <ListItemIcon>
+                        <DescriptionIcon />
+                    </ListItemIcon>
+                    <ListItemText primary="Report" />
                 </ListItemButton>
             </List>
         </Box>

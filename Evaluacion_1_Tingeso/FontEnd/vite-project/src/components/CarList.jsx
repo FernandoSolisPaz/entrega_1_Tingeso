@@ -61,7 +61,7 @@ const CarList = () => {
     const replaceIdType = (Id) => {
         switch (Id){
             case 0:
-                return 'Sedan'
+                return 'Sedán'
             case 1:
                 return 'Hatchback'
             case 2:
