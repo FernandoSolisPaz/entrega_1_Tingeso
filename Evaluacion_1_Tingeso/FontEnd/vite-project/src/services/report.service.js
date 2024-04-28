@@ -16,4 +16,11 @@ const createMotorRepairReport = () => {
     return httpClient.get('/api/report_motor_repair/calculate')
 }
 
-export default { getTypeRepairReport, createTypeRepairReport, getMotorRepairReport, createMotorRepairReport }
+const getTimeRepairReport = () => {
+    return httpClient.get('/api/report_time_repair/')
+}
+
+const createTimeRepairReport = () => {
+    return httpClient.get('/api/report_time_repair/calculate')
+}
+export default { getTypeRepairReport, createTypeRepairReport, getMotorRepairReport, createMotorRepairReport, getTimeRepairReport, createTimeRepairReport }
