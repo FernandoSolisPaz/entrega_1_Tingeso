@@ -11,12 +11,12 @@ import Paper from "@mui/material/Paper";
 import Button from "@mui/material/Button";
 import KeyboardReturnIcon from '@mui/icons-material/KeyboardReturn';
 
-const ReportTypeRepair = () => {
+const ReportMotorRepair = () => {
     const [reportRow, setReportRow] = useState([]);
 
     const init = () => {
         reportService
-            .getTypeRepairReport()
+            .getMotorRepairReport()
             .then((response) => {
                 console.log("Showing report type repair", response.data);
                 setReportRow(response.data);
@@ -31,6 +31,22 @@ const ReportTypeRepair = () => {
     useEffect(() => {
         init();
     }, []);
+
+    const replaceIdMotor = (Id) => {
+        switch (Id){
+            case 0:
+                return 'Gasoline'
+            case 1:
+                return 'Diesel'
+            case 2:
+                return 'Hybrid'
+            case 3:
+                return 'Electric'
+            default:
+                console.log('Motor id not found')
+        }
+    }
+
     return (
         <TableContainer component={Paper}>
             <Table sx = {{ minWidth: 650}} size="small" aria-label="a dense table">
@@ -43,7 +59,7 @@ const ReportTypeRepair = () => {
                             Repair Name
                         </TableCell>
                         <TableCell align="left" sx={{ fontWeight: "bold" }}>
-                            Type Name
+                            Motor Type
                         </TableCell>
                         <TableCell align="left" sx={{ fontWeight: "bold" }}>
                             Number of Repairs
@@ -56,12 +72,12 @@ const ReportTypeRepair = () => {
                 <TableBody>
                     {reportRow.map((rep) => (
                         <TableRow
-                        key={rep.id}
-                        sx={{ "&:last-child td, &:last-child th, &:last-child td}}": {border: 0}} }
+                            key={rep.id}
+                            sx={{ "&:last-child td, &:last-child th, &:last-child td}}": {border: 0}} }
                         >
                             <TableCell align="left">{rep.id}</TableCell>
                             <TableCell align="left">{rep.repairName}</TableCell>
-                            <TableCell align="left">{rep.typeName}</TableCell>
+                            <TableCell align="left">{replaceIdMotor(rep.motorId)}</TableCell>
                             <TableCell align="left">{rep.numberOfRepairs}</TableCell>
                             <TableCell align="left">{rep.totalAmount}</TableCell>
                         </TableRow>
@@ -84,4 +100,4 @@ const ReportTypeRepair = () => {
     );
 };
 
-export default ReportTypeRepair;
+export default ReportMotorRepair;
