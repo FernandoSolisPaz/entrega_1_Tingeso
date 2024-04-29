@@ -17,6 +17,7 @@ import java.util.List;
 
 @Service
 public class Report_type_repairService {
+
     @Autowired
     Report_type_repairRepository report_type_repairRepository;
     @Autowired
@@ -78,26 +79,6 @@ public class Report_type_repairService {
         }
         List<Report_type_repairEntity> report_type_repairs = report_type_repairRepository.findAllByOrderByAmount();
         return report_type_repairs;
-    }
-
-    public Report_type_repairEntity saveReportTypeRepair(Report_type_repairEntity report_type_repair) {
-        return report_type_repairRepository.save(report_type_repair);
-    }
-
-    public Report_type_repairEntity getReport_type_repairById(Long id) {
-        return report_type_repairRepository.findById(id).get();
-    }
-
-    public Report_type_repairEntity updateReportTypeRepair(Report_type_repairEntity report_type_repair) {
-        return report_type_repairRepository.save(report_type_repair);
-    }
-    public boolean deleteReportTypeRepair(Long id) throws Exception {
-        try{
-            report_type_repairRepository.deleteById(id);
-            return true;
-        } catch (Exception e) {
-            throw new Exception(e.getMessage());
-        }
     }
 
 }
