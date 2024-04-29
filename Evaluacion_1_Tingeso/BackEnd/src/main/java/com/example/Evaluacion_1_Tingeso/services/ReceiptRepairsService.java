@@ -19,8 +19,6 @@ public class ReceiptRepairsService {
 
     public List<ReceiptRepairsEntity> getByReceiptId(Long receiptId){ return receiptRepairsRepository.findByReceiptId(receiptId); }
 
-    public List<ReceiptRepairsEntity> getByRepairId(Long repairId){ return receiptRepairsRepository.findByRepairId(repairId); }
-
     public ReceiptRepairsEntity updateReceiptRepairs(ReceiptRepairsEntity receiptrepair){ return receiptRepairsRepository.save(receiptrepair); }
 
     public boolean deleteReceiptRepairs(Long id) throws Exception{

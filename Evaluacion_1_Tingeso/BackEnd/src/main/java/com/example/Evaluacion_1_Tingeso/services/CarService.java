@@ -18,8 +18,6 @@ public class CarService {
 
     public CarEntity getCarByPlate(String plate) { return carRepository.findById(plate).get(); }
 
-    public List<CarEntity> getCarByBrandId(Long id){ return carRepository.findByCarBrandId(id); }
-
     public CarEntity updateCar(CarEntity carBrand){ return carRepository.save(carBrand); }
 
     public boolean deleteCar(String plate) throws Exception{

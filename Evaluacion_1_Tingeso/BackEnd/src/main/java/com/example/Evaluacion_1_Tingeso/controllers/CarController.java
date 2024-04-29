@@ -27,12 +27,6 @@ public class CarController {
         return ResponseEntity.ok(car);
     }
 
-    @GetMapping("/byMotor/{id}")
-    public ResponseEntity<List<CarEntity>> getCarByBrandId(@PathVariable Long id) {
-        List<CarEntity> cars = carService.getCarByBrandId(id);
-        return ResponseEntity.ok(cars);
-    }
-
     @PostMapping("/")
     public ResponseEntity<CarEntity> saveCar(@RequestBody CarEntity car) {
         CarEntity carNew = carService.saveCar(car);

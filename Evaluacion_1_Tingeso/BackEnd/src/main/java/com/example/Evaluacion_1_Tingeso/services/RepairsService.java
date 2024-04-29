@@ -19,20 +19,7 @@ public class RepairsService {
 
     public RepairsEntity getRepairById(Long id) { return repairsRepository.findById(id).get(); }
 
-    public RepairsEntity getRepairByRepairName(String name) { return repairsRepository.findByRepairName(name); }
-
-    public List<RepairsEntity> getRepairByMotorId(int id){ return repairsRepository.findByTypeOfMotor(id); }
-
     public RepairsEntity updateRepair(RepairsEntity carBrand){ return repairsRepository.save(carBrand); }
 
     public RepairsEntity getByMotorIdAndRepairName(int id, String name) { return repairsRepository.findByMotorAndRepairName(id, name); }
-
-    public boolean deleteRepair(Long id) throws Exception{
-        try{
-            repairsRepository.deleteById(id);
-            return true;
-        } catch (Exception e){
-            throw new Exception(e.getMessage());
-        }
-    }
 }

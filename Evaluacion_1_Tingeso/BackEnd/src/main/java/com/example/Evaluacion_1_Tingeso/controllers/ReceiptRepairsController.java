@@ -27,12 +27,6 @@ public class ReceiptRepairsController {
         return ResponseEntity.ok(receiptrepairsList);
     }
 
-    @GetMapping("/byRepair/{id}")
-    public ResponseEntity<List<ReceiptRepairsEntity>> getReceiptRepairListByRepairId (@PathVariable Long id) {
-        List<ReceiptRepairsEntity> receiptrepairsList = receiptRepairsService.getByRepairId(id);
-        return ResponseEntity.ok(receiptrepairsList);
-    }
-
     @PostMapping("/")
     public ResponseEntity<ReceiptRepairsEntity> saveReceiptRepair(@RequestBody ReceiptRepairsEntity receiptRepair){
         ReceiptRepairsEntity receiptRepairNew = receiptRepairsService.saveReceiptRepairs(receiptRepair);

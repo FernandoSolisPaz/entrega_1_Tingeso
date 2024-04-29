@@ -12,6 +12,4 @@ public interface ReceiptRepairsRepository extends JpaRepository<ReceiptRepairsEn
 
     List<ReceiptRepairsEntity> findByReceiptId(Long receiptId);
 
-    List<ReceiptRepairsEntity> findByRepairId(Long repairId);
-
 }

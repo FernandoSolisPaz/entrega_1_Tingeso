@@ -27,12 +27,6 @@ public class Car_brandController {
         return ResponseEntity.ok(car_brand);
     }
 
-    @GetMapping("/name/{name}")
-    public ResponseEntity<Car_brandEntity> getCarBrandByName(@PathVariable String name) {
-        Car_brandEntity car_brand = car_BrandService.getCarBrandByName(name);
-        return ResponseEntity.ok(car_brand);
-    }
-
     @PostMapping("/")
     public ResponseEntity<Car_brandEntity> saveCarBrand(@RequestBody Car_brandEntity car_brand) {
         Car_brandEntity car_brandNew = car_BrandService.saveCarBrand(car_brand);

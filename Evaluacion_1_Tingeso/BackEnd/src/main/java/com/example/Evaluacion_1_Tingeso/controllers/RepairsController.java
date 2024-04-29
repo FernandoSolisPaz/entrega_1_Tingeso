@@ -27,24 +27,6 @@ public class RepairsController {
         return ResponseEntity.ok(repair);
     }
 
-    @GetMapping("/name/{name}")
-    public ResponseEntity<RepairsEntity> getRepairByRepairName(@PathVariable String name) {
-        RepairsEntity repair = repairsService.getRepairByRepairName(name);
-        return ResponseEntity.ok(repair);
-    }
-
-    @GetMapping("/byMotor/{id}")
-    public ResponseEntity<List<RepairsEntity>> getRepairByMotorId(@PathVariable int id) {
-        List<RepairsEntity> repairs = repairsService.getRepairByMotorId(id);
-        return ResponseEntity.ok(repairs);
-    }
-
-    @GetMapping("/byMotorAndName/{id}/{name}")
-    public ResponseEntity<RepairsEntity> getRepairByMotorAndName(@PathVariable int id, @PathVariable String name) {
-        RepairsEntity repair = repairsService.getByMotorIdAndRepairName(id, name);
-        return ResponseEntity.ok(repair);
-    }
-
     @PostMapping("/")
     public ResponseEntity<RepairsEntity> saveRepair(@RequestBody RepairsEntity repair) {
         RepairsEntity repairNew = repairsService.saveRepair(repair);
@@ -57,9 +39,4 @@ public class RepairsController {
         return ResponseEntity.ok(repairUpdated);
     }
 
-    @DeleteMapping("/{id}")
-    public ResponseEntity<Boolean> deleteRepairById(@PathVariable Long id) throws Exception {
-        var isDeleted = repairsService.deleteRepair(id);
-        return ResponseEntity.noContent().build();
-    }
 }

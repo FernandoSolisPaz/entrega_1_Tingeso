@@ -19,8 +19,6 @@ public class Car_brandService {
 
     public Car_brandEntity getCarBrandById(Long id) { return car_brandRepository.findById(id).get(); }
 
-    public Car_brandEntity getCarBrandByName(String name){ return car_brandRepository.findByBrandName(name); }
-
     public Car_brandEntity updateCarBrand(Car_brandEntity carBrand){ return car_brandRepository.save(carBrand); }
 
     public boolean deleteCarBrand(Long id) throws Exception{
