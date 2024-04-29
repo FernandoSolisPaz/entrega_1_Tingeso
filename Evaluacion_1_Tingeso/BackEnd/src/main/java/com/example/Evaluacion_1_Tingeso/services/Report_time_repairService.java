@@ -2,8 +2,6 @@ package com.example.Evaluacion_1_Tingeso.services;
 
 import com.example.Evaluacion_1_Tingeso.entities.Report_time_repairEntity;
 import com.example.Evaluacion_1_Tingeso.repositories.Report_time_repairRepository;
-import com.example.Evaluacion_1_Tingeso.entities.ReceiptRepairsEntity;
-import com.example.Evaluacion_1_Tingeso.services.ReceiptRepairsService;
 import com.example.Evaluacion_1_Tingeso.entities.Car_brandEntity;
 import com.example.Evaluacion_1_Tingeso.services.Car_brandService;
 import com.example.Evaluacion_1_Tingeso.entities.ReceiptEntity;
@@ -24,8 +22,6 @@ public class Report_time_repairService {
 
     @Autowired
     Report_time_repairRepository report_time_repairRepository;
-    @Autowired
-    ReceiptRepairsService receiptRepairsService;
     @Autowired
     Car_brandService brandService;
     @Autowired
