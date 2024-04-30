@@ -29,9 +29,12 @@ public class ReceiptService {
     @Autowired
     Car_brandService car_brandService;
 
-    public List<ReceiptEntity> getReceipts(){ return receiptRepository.findAll(); }
+    public List<ReceiptEntity> getReceipts(){
+        return receiptRepository.findAll();
+    }
 
     public ReceiptEntity saveReceipt(ReceiptEntity receipt, List<Integer> repairIds) {
+
         float[][] matrixRepairs = {
                 {0.05f, 0.07f, 0.1f, 0.08f},
                 {0.1f, 0.12f, 0.15f, 0.13f},
@@ -163,6 +166,7 @@ public class ReceiptService {
     public List<ReceiptEntity> getReceiptByCarPlate(String plate){ return receiptRepository.findByCarPlate(plate); }
 
     public ReceiptEntity updateReceipt(ReceiptEntity receipt){
+        float IVA = 0.19f;
         if(receipt.getWorkshopOutDate()!= null && receipt.getWorkshopOutHour() != null && receipt.getPickUpDate() != null && receipt.getPickUpHour() != null){
             LocalDateTime workshopOut = receipt.getWorkshopOutDate().atTime(receipt.getWorkshopOutHour());
             LocalDateTime pickUp = receipt.getPickUpDate().atTime(receipt.getPickUpHour());
@@ -181,19 +185,19 @@ public class ReceiptService {
         }
         int repairsSum = receipt.getCostOfRepair();
         float cost = (repairsSum - receipt.getBrandBond() - repairsSum * receipt.getDayOfAttentionDisc() - repairsSum * receipt.getNumberOfRepairsDisc() + repairsSum * receipt.getAgeVehicleSurcharge() + repairsSum * receipt.getKilometersSurcharge() + repairsSum * receipt.getDelayOfPickUpSurcharge());
-        float totalCost = cost + cost * Float.parseFloat(System.getenv("IVA"));
+        float totalCost = cost + cost * IVA;
         receipt.setTotalAmount(totalCost);
         return receiptRepository.save(receipt);
     }
 
-    public ReceiptEntity modifyOutDatesReceipt(long receiptId, LocalDate workshopOutDate, LocalTime workshopOutHour){
+    public ReceiptEntity modifyOutDatesReceipt(Long receiptId, LocalDate workshopOutDate, LocalTime workshopOutHour){
         ReceiptEntity moddedReceipt = getReceiptById(receiptId);
         moddedReceipt.setWorkshopOutDate(workshopOutDate);
         moddedReceipt.setWorkshopOutHour(workshopOutHour);
         return updateReceipt(moddedReceipt);
     }
 
-    public ReceiptEntity modifyPickUpDatesReceipt(long receiptId, LocalDate pickUpDate, LocalTime pickUpHour){
+    public ReceiptEntity modifyPickUpDatesReceipt(Long receiptId, LocalDate pickUpDate, LocalTime pickUpHour){
         ReceiptEntity moddedReceipt = getReceiptById(receiptId);
         moddedReceipt.setPickUpDate(pickUpDate);
         moddedReceipt.setPickUpHour(pickUpHour);
