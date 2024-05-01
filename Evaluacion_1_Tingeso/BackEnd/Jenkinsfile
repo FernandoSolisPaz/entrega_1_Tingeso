@@ -20,7 +20,7 @@ pipeline{
             steps{
                 script{
                     withDockerRegistry(credentialsId: 'docker-credentials'){
-                        bat "docker build -t fernandosolispaz/evaluacion_1_tingeso . -f Evaluacion_1_Tingeso/BackEnd/Dockerfile"
+                        bat "docker build -t fernandosolispaz/evaluacion_1_tingeso . -f Evaluacion_1_Tingeso/BackEnd"
                         bat "docker push fernandosolispaz/evaluacion_1_tingeso -f Evaluacion_1_Tingeso/BackEnd"
                     }                   
                     
