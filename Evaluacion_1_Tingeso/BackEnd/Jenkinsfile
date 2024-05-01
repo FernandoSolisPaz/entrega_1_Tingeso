@@ -13,7 +13,7 @@ pipeline{
         }
         stage("Test"){
             steps{
-                bat "mvn test"
+                bat "mvn -f Evaluacion_1_Tingeso/BackEnd test"
             }
         }        
         stage("Build and Push Docker Image"){
