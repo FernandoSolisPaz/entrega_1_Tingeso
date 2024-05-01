@@ -1,0 +1,31 @@
+pipeline{
+    agent any
+    tools{
+        maven "maven"
+
+    }
+    stages{
+        stage("Build JAR File"){
+            steps{
+                checkout scmGit(branches: [[name: '*/main']], extensions: [], userRemoteConfigs: [[url: 'https://github.com/hector-gallardo-araya/ayudantia-mingeso']])
+                bat "mvn clean install"
+            }
+        }
+        stage("Test"){
+            steps{
+                bat "mvn test"
+            }
+        }        
+        stage("Build and Push Docker Image"){
+            steps{
+                script{
+                    withDockerRegistry(credentialsId: 'docker-credentials'){
+                        bat "docker build -t fernandosolispaz/evaluacion_1_tingeso ."
+                        bat "docker push fernandosolispaz/evaluacion_1_tingeso"
+                    }                   
+                    
+                }
+            }
+        }
+    }
+}
