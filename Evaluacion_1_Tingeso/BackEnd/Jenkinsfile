@@ -8,6 +8,7 @@ pipeline{
         stage("Build JAR File"){
             steps{
                 checkout scmGit(branches: [[name: '*/main']], extensions: [], userRemoteConfigs: [[url: 'https://github.com/FernandoSolisPaz/entrega_1_Tingeso']])
+                bat "cd Evaluacion_1_Tingeso/BackEnd"
                 bat "mvn clean install"
             }
         }
