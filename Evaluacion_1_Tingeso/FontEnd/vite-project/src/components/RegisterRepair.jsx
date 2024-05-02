@@ -14,7 +14,7 @@ const RegisterRepair = () => {
     const [camp2Habilitated, setCamp2] = useState(false);
     const [repairIds, setRepairIds] = useState([]);
     const navigate = useNavigate();
-    let tittle = "Register a repair for a car";
+    let tittle = "Register a repair for a vehicle";
 
     const saveReceipt = (r) =>{
         r.preventDefault();
