@@ -3,7 +3,7 @@ const Home = () => {
         <div>
             <h1>AutoFix: Specialized Workshop</h1>
             <p>
-                HOLAAAAAAutoFix es una aplicación web para gestionar planillas de reparaciones de
+                AutoFix es una aplicación web para gestionar planillas de reparaciones de
                 autos. Esta aplicación ha sido desarrollada usando tecnologías como{" "}
                 <a href="https://spring.io/projects/spring-boot">Spring Boot</a> (para
                 el backend), <a href="https://reactjs.org/">React</a> (para el Frontend)
